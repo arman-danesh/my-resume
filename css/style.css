@@ -1,285 +1,333 @@
-    body {
-        padding: 0px;
-        margin: 0px;
-        direction: ltr;
-    }
-    /*start fonts */
-    
-    @font-face {
-        font-family: font-strong;
-        src: url("../font/Poppins-Medium.ttf");
-    }
-    
-    @font-face {
-        font-family: font-md;
-        src: url("../font/Poppins-Light.ttf");
-    }
-    
-    @font-face {
-        font-family: PlayfairDisplay-Bold;
-        src: url("../font/PlayfairDisplay-Bold.ttf");
-    }
-    
-    .font-bold {
-        font-family: font-strong, system-ui;
-    }
-    
-    .font-Regular {
-        font-family: font-md, system-ui;
-    }
-    /*end fonts */
-    /*start black screen */
-    
-    .section {
-        opacity: 0;
-    }
-    
-    .black_bg {
-        position: fixed;
-        background-color: black;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        text-align: center;
-        align-items: center;
-        justify-content: center;
-    }
-    
-    .text_edit {
-        font-family: PlayfairDisplay-Bold, system-ui;
-        font-size: 50px;
-        color: white;
-    }
-    
-    .hide {
-        background-color: black;
-        overflow: hidden;
-    }
-    
-    .hide .text {
-        transform: translateY(100%);
-        display: inline-block;
-        margin-top: 2rem;
-    }
-    
-    .gray_bg {
-        position: fixed;
-        background-color: rgba(6, 6, 6, 0.664);
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        transform: translateY(100%)
-    }
-    /*end black screen */
-    /* stat of page custom */
-    
-    .control {
-        max-width: 2250px;
-        width: 100%;
-        height: 100%;
-        max-height: 2500px;
-    }
-    
-    hr {
-        background-color: rgba(219, 165, 7, 100%);
-        color: rgba(219, 165, 7, 100%);
-        max-height: 5px;
-        min-height: 5px;
-        border: none;
-        margin-top: 1rem;
-    }
-    
-    .golden {
-        color: rgba(219, 165, 7, 100%);
-    }
-    
-    .bg-golden {
-        background-color: rgba(219, 165, 7, 100%);
-    }
-    
-    .progress-sm {
-        height: 0.5rem!important;
-        background-color: rgba(16, 26, 43, 100%)
-    }
-    
-    .rs {
-        background-color: rgba(22, 22, 26, 70%);
-    }
-    
-    .rs-header {
-        min-height: 172px;
-        background-color: rgba(33, 33, 40, 80%);
-    }
-    
-    .circle-position {
-        top: 90%;
-        left: 60%;
-    }
-    
-    .footer-size {
-        height: 35px;
-    }
-    
-    .card-color {
-        background-color: rgba(33, 33, 40, 100%);
-    }
-    .fix {
-        direction: ltr;
-    }
-    /* end of page custom */
-    /* start footer btn */
 
-    footer div button {
-        padding: 3px;
-        border: 0px;
-        background: none;
+    /* width */
+::-webkit-scrollbar {
+    width: 5px;
+    scroll-behavior: smooth;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgba(219, 165, 7, 100%);
+    border-radius: 10px;
+}
+
+/*!* Handle on hover *!*/
+/*::-webkit-scrollbar-thumb:hover {*/
+/*    background: */
+/*}*/
+body {
+    padding: 0px;
+    margin: 0px;
+    direction: ltr;
+
+}
+
+/*start fonts */
+
+@font-face {
+    font-family: font-strong;
+    src: url("../font/Poppins-Medium.ttf");
+}
+
+@font-face {
+    font-family: font-md;
+    src: url("../font/Poppins-Light.ttf");
+}
+
+@font-face {
+    font-family: PlayfairDisplay-Bold;
+    src: url("../font/PlayfairDisplay-Bold.ttf");
+}
+
+.font-bold {
+    font-family: font-strong, system-ui;
+}
+
+.font-Regular {
+    font-family: font-md, system-ui;
+}
+
+/*end fonts */
+/*start black screen */
+
+.section {
+    opacity: 0;
+}
+
+.black_bg {
+    position: fixed;
+    background-color: black;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.text_edit {
+    font-family: PlayfairDisplay-Bold, system-ui;
+    font-size: 50px;
+    color: white;
+}
+
+.hide {
+    background-color: black;
+    overflow: hidden;
+}
+
+.hide .text {
+    transform: translateY(100%);
+    display: inline-block;
+    margin-top: 2rem;
+}
+
+.gray_bg {
+    position: fixed;
+    background-color: rgba(6, 6, 6, 0.664);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: translateY(100%)
+}
+
+/*end black screen */
+/* stat of page custom */
+
+.control {
+    max-width: 2250px;
+    width: 100%;
+    height: 100%;
+    max-height: 2500px;
+}
+
+hr {
+    background-color: rgba(219, 165, 7, 100%);
+    color: rgba(219, 165, 7, 100%);
+    max-height: 5px;
+    min-height: 5px;
+    border: none;
+    margin-top: 1rem;
+}
+
+.golden {
+    color: rgba(219, 165, 7, 100%);
+}
+
+.bg-golden {
+    background-color: rgba(219, 165, 7, 100%);
+}
+
+.progress-sm {
+    height: 0.5rem !important;
+    background-color: rgba(16, 26, 43, 100%)
+}
+
+.rs {
+    background-color: rgba(22, 22, 26, 70%);
+}
+
+.rs-header {
+    min-height: 172px;
+    background-color: rgba(33, 33, 40, 80%);
+}
+
+.circle-position {
+    top: 90%;
+    left: 60%;
+}
+
+.footer-size {
+    height: 35px;
+    background: rgba(33, 33, 40, 80%);
+}
+
+.card-color {
+    background-color: rgba(33, 33, 40, 100%);
+}
+
+.fix {
+    direction: ltr;
+}
+
+/* end of page custom */
+/* start footer btn */
+
+footer div button {
+    padding: 3px;
+    border: none;
+    background: none;
+}
+
+/* end footer btn */
+/* start of font custom */
+
+.text-custom {
+    color: rgba(202, 202, 202, 80%);
+    font-size: 12px;
+}
+.text_about{
+    margin: 0px auto;
+    width: 100%;
+    height: 235px;
+    overflow-y: scroll;
+}
+.text-about {
+    font-size: 14px;
+    color: rgba(202, 202, 202, 80%);
+}
+
+.progress-text {
+    color: rgba(202, 202, 202, 80%);
+}
+
+.footer-text {
+    font-size: 14px;
+    color: white;
+}
+
+.title-fs {
+    font-size: 17px;
+}
+
+.title-text {
+    font-size: 16px;
+}
+
+.card-title {
+    font-size: 17px;
+}
+
+.card-text {
+    font-size: 12px;
+}
+
+/* end of font custom */
+/*start circle prograss bar */
+
+.container {
+    width: 55px;
+    height: 55px;
+    font-size: 13px;
+    margin: 0px;
+    padding: 0px 3px;
+}
+
+.circular-progress {
+    position: relative;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+}
+
+.circular-progress:before {
+    content: "";
+    position: absolute;
+    height: 84%;
+    width: 84%;
+    background-color: #16161A;
+    border-radius: 50%;
+    box-shadow: 0px 0px 2px #0000008d;
+}
+
+.value-container {
+    position: relative;
+    color: #ffffff;
+}
+
+/*end circle prograss bar */
+/*start silder */
+
+.splide {
+    min-width: 150px;
+    width: 100%;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+li img {
+    max-width: 300px;
+    min-width: 200px;
+    width: 100%;
+    height: 200px;
+}
+
+/*end silder */
+/*start of page control */
+
+@media (max-width: 991.98px) {
+    div svg {
+        width: 30px;
+        height: 30px;
     }
-    /* end footer btn */
-    /* start of font custom */
-    
-    .text-custom {
-        color: rgba(202, 202, 202, 80%);
-        font-size: 12px;
+}
+
+@media (max-width: 300PX) {
+    li img {
+        max-width: 200px;
+        min-width: 100px;
+        width: 100%;
+        height: 130px;
     }
-    
-    .text-about {
-        font-size: 14px;
-        color: rgba(202, 202, 202, 80%);
-    }
-    
-    .progress-text {
-        color: rgba(202, 202, 202, 80%);
-    }
-    
-    .footer-text {
-        font-size: 14px;
-        color: rgba(202, 202, 202, 80%);
-    }
-    
-    .title-fs {
-        font-size: 17px;
-    }
-    
-    .title-text {
-        font-size: 16px;
-    }
-    
-    .card-title {
-        font-size: 17px;
-    }
-    
-    .card-text {
-        font-size: 12px;
-    }
-    /* end of font custom */
-    /*start circle prograss bar */
-    
-    .container {
-        width: 55px;
-        height: 55px;
-        font-size: 13px;
-        margin: 0px;
-        padding: 0px 3px;
-    }
-    
-    .circular-progress {
-        position: relative;
-        height: 50px;
-        width: 50px;
-        border-radius: 50%;
-        display: grid;
-        place-items: center;
-    }
-    
-    .circular-progress:before {
-        content: "";
-        position: absolute;
-        height: 84%;
-        width: 84%;
-        background-color: #16161A;
-        border-radius: 50%;
-        box-shadow: 0px 0px 2px #0000008d;
-    }
-    
-    .value-container {
-        position: relative;
-        color: #ffffff;
-    }
-    /*end circle prograss bar */
-    /*start silder */
-    
     .splide {
         min-width: 150px;
         width: 100%;
-        height: 250px;
+        height: 180px;
         display: flex;
         justify-content: center;
         align-items: center;
     }
-    
-    li img {
-        max-width: 300px;
-        min-width: 200px;
-        width: 100%;
-        height: 200px;
+}
+
+@media (max-width: 991.98px) {
+    .text-about,
+    .title-fs,
+    .card-title {
+        font-size: 12px;
     }
-    /*end silder */
-    /*start of page control */
-    
-    @media(max-width: 991.98px) {
-        div svg {
-            width: 30px;
-            height: 30px;
-        }
+    .text_about {
+        height: 100px;
     }
-    
-    @media(max-width: 300PX) {
-        li img {
-            max-width: 200px;
-            min-width: 100px;
-            width: 100%;
-            height: 130px;
-        }
-        .splide {
-            min-width: 150px;
-            width: 100%;
-            height: 180px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+}
+
+@media (max-width: 1100px) {
+    .footer-text {
+        font-size: 9px;
+        text-align: center;
     }
-    
-    @media(max-width: 991.98px) {
-        .text-about,
-        .title-fs,
-        .card-title {
-            font-size: 12px;
-        }
+}
+
+@media (max-width: 991.98px) {
+    .fs-control,
+    .title-text,
+    .text-custom,
+    .text-about,
+    .card-text {
+        font-size: 10px;
     }
-    
-    @media(max-width: 1100px) {
-        .footer-text {
-            font-size: 9px;
-            text-align: center;
-        }
+}
+
+/*end of page control */
+/*start footer icon*/
+    button a svg path {
+        fill:white ;
     }
-    
-    @media(max-width: 991.98px) {
-        .fs-control,
-        .title-text,
-        .text-custom,
-        .text-about,
-        .card-text {
-            font-size: 10px;
-        }
-    }
-    /*end of page control */
-    /*start footer icon hover*/
-    button a svg path:hover{
-        fill: rgba(219, 165, 7, 100%);;
-    }
-    /*end footer icon hover*/
+
+    button a svg path:hover {
+    fill: rgba(219, 165, 7, 100%);
+}
+
+/*end footer icon*/

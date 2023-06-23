@@ -119,10 +119,8 @@ class language {
 }
 
 let en = true;
-const about_e = "Obtaining a non-continuous associate's degree from the Applied Science Center.\n" +
-    "Gaining skills and experience as a freelancer in the fields of logo design and icon design, ui/ux design, banner design and sharp construction, WordPress template creation and custom template creation, content creation, some projects in the category of projects as A work sample has been placed.";
-const about_f = "اخذ مدرک کاردانی ناپیوسته از مرکز علمی کاربردی.</br>" +
-    "کسب مهارت و تجربه به عنوان فریلنسر در زمینه های طراحی لوگو و طراحی آیکون،</br> طراحی ui/ux، طراحی بنر و ساخت تیز، ساخت قالب وردپرس و ساخت قالب اختصاصی، تولید محتوا،</br> که برخی از پروژه ها در دسته بندی پروژه ها</br> به عنوان نمونه کار قرار داده شده است.";
+const about_e = "I got my associate degree in 2017 and started to gain skills and experience as a freelancer in the field of logo design, icon, ui/ux, banner and sharp construction, WordPress template, exclusive template and content production, which some projects It has been placed in my projects category as a sample of my work. These activities led me to be interested in design and programming. My great interest in programming made me trying to always keep my information updated in the field of programming. I like problem solving and complex projects are interesting and fun for me.";
+const about_f = "من مدرک کاردانی ناپوسته خود را در سال 1395 گرفته و شروع به کسب مهارت و تجربه به عنوان فریلنسر در زمینه طراحی لوگو ، آیکن ، ui/ux ، بنر و ساخت تیز، قالب وردپرس، قالب اختصاصی و تولید محتوا، که برخی از پروژه ها در دسته بندی پروژه های من به عنوان نمونه کارهای من قرار داده شده است.این فعالیت ها علاقه مندی من را به طراحی و برنامه نویسی سوق داد.علاقه زیاد من به برنامه نویسی باعث شد که سعی کنم همیشه اطلاعات خود را در حوزه برنامه نویسی به روز نگه دارم.حل مسئله را دوست دارم و پروژه هایی که پیچیدگی داشته باشد ، برایم جذاب و سرگرم کننده است.";
 const card_e = ['i will be responsible for implementing visual elements that users see and interact within a web application, which makes my role crucial for the success of compeny business.', 'UX designers seek to develop and improve the quality interaction between the user and the company, while UI designers introduce the brands power and visual assets to users.', 'A well-designed logo or icon is the first point of identification of a software or web for customers and an important basis for branding a company.', 'SEO consists of several elements and its main goal is to show value to search engines that allows pages to rank high and reach the first page of search engines.'];
 const card_f = ['به‌عنوان یک توسعه‌دهنده فرانت‌اند،من مسئول پیاده‌سازی عناصر بصری هستم که کاربران می‌بینند و در یک برنامه وب با هم تعامل دارند، که نقش من را برای موفقیت کسب‌وکار شرکت بسیار مهم می‌کند.', 'طراحان UX به دنبال توسعه و بهبود تعامل کیفیت بین کاربر و شرکت هستند، در حالی که طراحان UI قدرت و دارایی های بصری برند را به کاربران معرفی می کنند.', 'یک لوگو یا ایکن خوب طراحی شده اولین نقطه شناسایی یک نرم افزار یا وب برای مشتریان و پایه مهمی برای برندسازی یک شرکت است.', 'سئو از چندین عنصر تشکیل شده است و هدف اصلی آن نشان دادن ارزش به موتورهای جستجو است که به صفحات امکان می دهد رتبه بالایی داشته باشند و به صفحه اول موتورهای جستجو برسند.'];
 const html_dir = document.getElementById("dir");
@@ -142,9 +140,8 @@ const html_card_a = document.getElementsByName("card_a");
 const html_progress_t = document.getElementsByName("progress_t");
 const html_progress_t_c = document.getElementsByName("progress_t_c");
 const html_footer_text = document.getElementById("footer_text");
-const english = new language("EN", "ARMAN DANESH", ['UI/UX Designer', 'Front-End Developer'], ['About me', 'information', 'University & Abilities', 'Contacts'], about_e, ['Country:', 'City:', 'Age:'], ['IRAN', 'Tehran', '24'], ['university name:', 'degree:', 'Git:', 'Wordpress:', 'English:'], ['University of Applied </br> Sciences & Technology', 'Associate Degree'], ['Phone Number:', 'Telegram:', 'Gmail:'], ['My Service', 'Projects', 'Professional Skill', 'Character Skill '], ['Front-end', 'Ui/Ux Designer', 'Logo Designer', 'SEO'], [card_e[0], card_e[1], card_e[2], card_e[3]], ['HTML:', 'CSS:', 'JavaScript:', 'Bootstrap:', 'Figma & Xd:', 'PhotoShop:', 'Illustrator:', 'Blender:'], ['Team Work:', 'Fast learner:', 'Creation:', ' innovation:'], "2022-2023©Any copying of the template design, the content of my resume in any way will be prosecuted");
-const farsi = new language("FA", "آرمان دانش", ['طراح UI/UX', 'برنامه نویس فرانت اند'], ['درباره من', 'اطلاعات', 'دانشگاه و توانایی ها', 'راه تماس'], about_f, ['کشور:', 'شهر:', 'سن:'], ['ایران', 'تهران', '24'], ['نام دانشگاه:', 'مدرک:', 'گیت:', 'وردپرس:', 'انگلیسی:'], ['مرکز اموزشی علمی </br> کاربردی', 'فوق دیپلم'], ['شماره همراه:', 'تلگرام:', 'ایمیل:'], ['سرویس های من', 'پروزه ها', 'مهارت حرفه ای', 'مهارت شخصیت'], ['فرانت اند', 'طراح Ui/Ux', 'طراح لوگو', 'سئو'], [card_f[0], card_f[1], card_f[2], card_f[3]], ['HTML:', 'CSS:', 'جاوا اسکریپت:', 'بوت استرپ:', 'Figma & Xd:', 'فتوشاپ:', 'ایلاستریتور:', 'بلندر:'], ['کار گروهی:', 'یادگیری سریع:', 'خلاق:', ' نوآوری:'],"1402-1401©هرگونه کپی برداری از طرح قالب, مطالب رزومه من به هر نحو، پیگرد قانونی دارد");
-
+const english = new language("FA", "ARMAN DANESH", ['UI/UX Designer', 'Front-End Developer'], ['About me', 'information', 'Learning', 'Contact Me'], about_e, ['resident:', 'Age:', 'Military service:'], ['IRAN,Tehran', '24', 'It ended in 2022'], ['degree:', 'university name:', 'jquery:', 'laravel:', 'mysql:'], ['Associate Degree','University of Applied </br> Sciences & Technology'], ['Phone Number:', 'Telegram:', 'Gmail:'], ['what i offers', 'My Projects', 'Professional Skill', 'My Skill '], ['Front-end', 'Ui/Ux Designer', 'Logo Designer', 'SEO'], [card_e[0], card_e[1], card_e[2], card_e[3]], ['HTML5:', 'CSS:', 'JavaScript:', 'Bootstrap:','Github:', 'Figma & Xd:', 'PhotoShop:', 'Illustrator:', 'Wordpress:','SEO:'], ['Team Work:', 'Fast learner:', 'Creation:', ' innovation:'], "2023©Any copying of the template design, the content of my resume in any way will be prosecuted");
+const farsi = new language("EN", "آرمان دانش", ['طراح UI/UX', 'برنامه نویس فرانت اند'], ['درباره من', 'مشخصات', 'درحال یادگیری', 'تماس با من'], about_f, ['مقیم:', 'سن:', 'خدمت سربازی:'], ['ایران،تهران', '24', 'در سال 1401 به پایان رسید'], ['مدرک:', 'نام دانشگاه:', 'جی کوئری:', 'لاراول:', 'mysql:'], ['کاردانی','مرکز اموزشی علمی </br> کاربردی'], [':شماره همراه', 'تلگرام:', 'ایمیل:'], ['خدماتی که من ارائه می دهم', 'پروزه های من', 'مهارتهای حرفه ای', 'مهارتهای من'], ['فرانت اند', 'طراح Ui/Ux', 'طراح لوگو', 'سئو'], [card_f[0], card_f[1], card_f[2], card_f[3]], ['HTML5:', 'CSS:', 'جاوا اسکریپت:', 'بوت استرپ:','Github:','Figma & Xd:', 'فتوشاپ:', 'ایلاستریتور:', 'وردپرس:','سئو'], ['کار گروهی:', 'یادگیری سریع:', 'خلاق:', ' نوآوری:'],"1402©هرگونه کپی برداری از طرح قالب, مطالب رزومه من به هر نحو، پیگرد قانونی دارد");
 function lan() {
     if (en) {
         TimeLINE.to(".section", {opacity: 0, stagger: 0.25});
@@ -195,6 +192,8 @@ function lan() {
             html_progress_t[5].innerHTML = farsi.progress_t[5];
             html_progress_t[6].innerHTML = farsi.progress_t[6];
             html_progress_t[7].innerHTML = farsi.progress_t[7];
+            html_progress_t[8].innerHTML = farsi.progress_t[8];
+            html_progress_t[9].innerHTML = farsi.progress_t[9];
             html_progress_t_c[0].innerHTML = farsi.progress_t_c[0];
             html_progress_t_c[1].innerHTML = farsi.progress_t_c[1];
             html_progress_t_c[2].innerHTML = farsi.progress_t_c[2];
@@ -256,6 +255,8 @@ function lan() {
             html_progress_t[5].innerHTML = english.progress_t[5];
             html_progress_t[6].innerHTML = english.progress_t[6];
             html_progress_t[7].innerHTML = english.progress_t[7];
+            html_progress_t[8].innerHTML = english.progress_t[8];
+            html_progress_t[9].innerHTML = english.progress_t[9];
             html_progress_t_c[0].innerHTML = english.progress_t_c[0];
             html_progress_t_c[1].innerHTML = english.progress_t_c[1];
             html_progress_t_c[2].innerHTML = english.progress_t_c[2];
