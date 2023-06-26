@@ -35,7 +35,7 @@ function onLoad() {
             break;
         case 'iOS':
             urlLink1 = "https://matrix.to/#/@arman458:matrix.org";
-            urlLink2 = "http://t.me/Arman1250D";
+            urlLink2 = "http://t.me/ArmanDaneshwork";
             urlLink3 = "mailto:armandaneshwork@gmail.com";
             break;
         default:
