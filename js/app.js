@@ -140,8 +140,8 @@ const html_card_a = document.getElementsByName("card_a");
 const html_progress_t = document.getElementsByName("progress_t");
 const html_progress_t_c = document.getElementsByName("progress_t_c");
 const html_footer_text = document.getElementById("footer_text");
-const english = new language("FA", "ARMAN DANESH", ['UI/UX Designer', 'Front-End Developer'], ['About me', 'information', 'Learning', 'Contact Me'], about_e, ['resident:', 'Age:', 'Military service:'], ['IRAN,Tehran', '24', 'It ended in 2022'], ['degree:', 'university name:', 'jquery:', 'laravel:', 'mysql:'], ['Associate Degree','University of Applied </br> Sciences & Technology'], ['Phone Number:', 'Telegram:', 'Gmail:'], ['what i offers', 'My Projects', 'Professional Skill', 'My Skill '], ['Front-end', 'Ui/Ux Designer', 'Logo Designer', 'SEO'], [card_e[0], card_e[1], card_e[2], card_e[3]], ['HTML5:', 'CSS:', 'JavaScript:', 'Bootstrap:','Github:', 'Figma & Xd:', 'PhotoShop:', 'Illustrator:', 'Wordpress:','SEO:'], ['Team Work:', 'Fast learner:', 'Creation:', ' innovation:'], "2023©Any copying of the template design, the content of my resume in any way will be prosecuted");
-const farsi = new language("EN", "آرمان دانش", ['طراح UI/UX', 'برنامه نویس فرانت اند'], ['درباره من', 'مشخصات', 'درحال یادگیری', 'تماس با من'], about_f, ['مقیم:', 'سن:', 'خدمت سربازی:'], ['ایران،تهران', '24', 'در سال 1401 به پایان رسید'], ['مدرک:', 'نام دانشگاه:', 'جی کوئری:', 'لاراول:', 'mysql:'], ['کاردانی','مرکز اموزشی علمی </br> کاربردی'], [':شماره همراه', 'تلگرام:', 'ایمیل:'], ['خدماتی که من ارائه می دهم', 'پروزه های من', 'مهارتهای حرفه ای', 'مهارتهای من'], ['فرانت اند', 'طراح Ui/Ux', 'طراح لوگو', 'سئو'], [card_f[0], card_f[1], card_f[2], card_f[3]], ['HTML5:', 'CSS:', 'جاوا اسکریپت:', 'بوت استرپ:','Github:','Figma & Xd:', ':فتوشاپ:', 'ایلاستریتور:', 'وردپرس:','سئو'], ['کار گروهی:', 'یادگیری سریع:', 'خلاق:', ' نوآوری:'],"1402©هرگونه کپی برداری از طرح قالب, مطالب رزومه من به هر نحو، پیگرد قانونی دارد");
+const english = new language("FA", "ARMAN DANESH", ['UI/UX Designer', 'Front-End Developer'], ['About me', 'information', 'Learning', 'Contact Me'], about_e, ['resident:', 'Age:', 'Military service:'], ['IRAN,Tehran', '24', 'It ended in 2022'], ['degree:', 'university name:', '.net:', 'mongodb:', 'mysql:'], ['Associate Degree','University of Applied </br> Sciences & Technology'], ['Phone Number:', 'Telegram:', 'Gmail:'], ['what i offers', 'My Projects', 'Professional Skill', 'My Skill '], ['Front-end', 'Ui/Ux Designer', 'Logo Designer', 'SEO'], [card_e[0], card_e[1], card_e[2], card_e[3]], ['HTML5:', 'CSS:', 'JavaScript:', 'Bootstrap:','Github:','type script','sass / less:', 'Figma & Xd:', 'PhotoShop:', 'Illustrator:', 'Wordpress:','SEO:','React js'], ['Team Work:', 'Fast learner:', 'Creation:', ' innovation:'], "2023©Any copying of the template design, the content of my resume in any way will be prosecuted");
+const farsi = new language("EN", "آرمان دانش", ['طراح UI/UX', 'برنامه نویس فرانت اند'], ['درباره من', 'مشخصات', 'درحال یادگیری', 'تماس با من'], about_f, ['مقیم:', 'سن:', 'خدمت سربازی:'], ['ایران،تهران', '24', 'در سال 1401 به پایان رسید'], ['مدرک:', 'نام دانشگاه:', '.net:', 'mongodb:', 'mysql:'], ['کاردانی','مرکز اموزشی علمی </br> کاربردی'], [':شماره همراه', 'تلگرام:', 'ایمیل:'], ['خدماتی که من ارائه می دهم', 'پروزه های من', 'مهارتهای حرفه ای', 'مهارتهای من'], ['فرانت اند', 'طراح Ui/Ux', 'طراح لوگو', 'سئو'], [card_f[0], card_f[1], card_f[2], card_f[3]], ['HTML5:', 'CSS:', 'جاوا اسکریپت:', 'بوت استرپ:','Github:','type script','sass / less:','Figma & Xd:', ':فتوشاپ:', 'ایلاستریتور:', 'وردپرس:','سئو','React js'], ['کار گروهی:', 'یادگیری سریع:', 'خلاق:', ' نوآوری:'],"1402©هرگونه کپی برداری از طرح قالب, مطالب رزومه من به هر نحو، پیگرد قانونی دارد");
 function lan() {
     if (en) {
         TimeLINE.to(".section", {opacity: 0, stagger: 0.25});
@@ -194,6 +194,9 @@ function lan() {
             html_progress_t[7].innerHTML = farsi.progress_t[7];
             html_progress_t[8].innerHTML = farsi.progress_t[8];
             html_progress_t[9].innerHTML = farsi.progress_t[9];
+            html_progress_t[10].innerHTML = farsi.progress_t[10];
+            html_progress_t[11].innerHTML = farsi.progress_t[11];
+            html_progress_t[12].innerHTML = farsi.progress_t[12];
             html_progress_t_c[0].innerHTML = farsi.progress_t_c[0];
             html_progress_t_c[1].innerHTML = farsi.progress_t_c[1];
             html_progress_t_c[2].innerHTML = farsi.progress_t_c[2];
@@ -257,6 +260,9 @@ function lan() {
             html_progress_t[7].innerHTML = english.progress_t[7];
             html_progress_t[8].innerHTML = english.progress_t[8];
             html_progress_t[9].innerHTML = english.progress_t[9];
+            html_progress_t[10].innerHTML = english.progress_t[10];
+            html_progress_t[11].innerHTML = english.progress_t[11];
+            html_progress_t[12].innerHTML = english.progress_t[12];
             html_progress_t_c[0].innerHTML = english.progress_t_c[0];
             html_progress_t_c[1].innerHTML = english.progress_t_c[1];
             html_progress_t_c[2].innerHTML = english.progress_t_c[2];
