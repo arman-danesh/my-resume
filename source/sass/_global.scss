@@ -1,179 +1,326 @@
-/**
- * Global styles for the resume website
- * Contains variables, base styles, and common utilities
- */
-
-// Color Variables
-// These variables store commonly used colors throughout the website
-$golden-color: rgba(219, 165, 7, 100%);    // Primary accent color
-$dark-bg: rgba(16, 26, 43, 100%);         // Dark background color
-$text-color: rgba(202, 202, 202, 80%);    // Text color for content
-$card-bg: rgba(33, 33, 40, 100%);         // Background color for cards
-$header-bg: rgba(33, 33, 40, 80%);        // Background color for header
-$footer-bg: rgba(33, 33, 40, 80%);        // Background color for footer
-
-// Custom Scrollbar Styling
-// Styles for the website's scrollbar to match the design theme
+// Base styles and common utilities
 ::-webkit-scrollbar {
-    width: 5px;
-    scroll-behavior: smooth;
-    
-    &-track {
-        box-shadow: inset 0 0 5px grey;
-        border-radius: 10px;
-    }
-    
-    &-thumb {
-        background: $golden-color;
-        border-radius: 10px;
-    }
+  width: 5px;
+  scroll-behavior: smooth;
 }
 
-// Base Styles
-// Basic styles for the body element
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(219, 165, 7);
+  border-radius: 10px;
+}
+
 body {
-    padding: 0;
-    margin: 0;
-    direction: ltr;
+  padding: 0;
+  margin: 0;
+  direction: ltr;
 }
 
-// Custom Font Declarations
-// Loading custom fonts for the website
+// Font faces
 @font-face {
-    font-family: font-strong;
-    src: url("../font/Poppins-Medium.ttf");
-}
-
-@font-face {
-    font-family: font-md;
-    src: url("../font/Poppins-Light.ttf");
+  font-family: font-strong;
+  src: url("../../font/Poppins-Medium.ttf");
 }
 
 @font-face {
-    font-family: PlayfairDisplay-Bold;
-    src: url("../font/PlayfairDisplay-Bold.ttf");
+  font-family: font-md;
+  src: url("../../font/Poppins-Light.ttf");
 }
 
-// Font Utility Classes
-// Classes for applying different font families
+@font-face {
+  font-family: PlayfairDisplay-Bold;
+  src: url("../../font/PlayfairDisplay-Bold.ttf");
+}
+
+// Typography classes
 .font-bold {
-    font-family: font-strong, system-ui;
+  font-family: font-strong, system-ui;
 }
 
 .font-Regular {
-    font-family: font-md, system-ui;
+  font-family: font-md, system-ui;
 }
 
-// Layout and Container Styles
-// Styles for main layout containers and spacing
+// Layout classes
 .control {
-    max-width: 2250px;
-    width: 100%;
-    height: 100%;
-    max-height: 2500px;
+  max-width: 2250px;
+  width: 100%;
+  height: 100%;
 }
 
-// Utility Classes
-// Reusable classes for common styles
+// Common elements
 hr {
-    background-color: $golden-color;
-    color: $golden-color;
-    max-height: 5px;
-    min-height: 5px;
-    border: none;
-    margin-top: 1rem;
+  background-color: rgb(219, 165, 7);
+  color: rgb(219, 165, 7);
+  max-height: 5px;
+  min-height: 5px;
+  border: none;
+  margin-top: 1rem;
 }
 
+// Utility classes
 .golden {
-    color: $golden-color;
+  color: rgb(219, 165, 7);
 }
 
 .bg-golden {
-    background-color: $golden-color;
+  background-color: rgb(219, 165, 7);
 }
 
-// Progress Bar Styles
 .progress-sm {
-    height: 0.5rem !important;
-    background-color: $dark-bg;
+  height: 0.5rem !important;
+  background-color: rgb(16, 26, 43);
 }
 
-// Card and Section Backgrounds
 .rs {
-    background-color: rgba(22, 22, 26, 70%);
+  background-color: rgba(22, 22, 26, 0.7);
 }
 
 .rs-header {
-    min-height: 172px;
-    background-color: $header-bg;
+  min-height: 172px;
+  background-color: rgba(33, 33, 40, 0.8);
 }
 
-// Positioning Classes
 .circle-position {
-    bottom: -4%;
-    right: 0%;
+  bottom: -4%;
+  right: 0%;
 }
 
 .footer-size {
-    height: 35px;
-    background: $footer-bg;
+  height: 35px;
+  background: rgba(33, 33, 40, 0.8);
 }
 
 .card-color {
-    background-color: $card-bg;
+  background-color: rgb(33, 33, 40);
 }
 
 .fix {
-    direction: ltr;
+  direction: ltr;
+  margin-bottom: 0;
 }
 
-// Typography Styles
-// Text-related styles and utilities
+// Text utilities
 .text_justify {
-    text-align: justify;
-    text-justify: inter-word;
-    word-spacing: 1px;
+  text-align: justify;
+  text-justify: inter-word;
+  word-spacing: 1px;
 }
 
 .text-custom {
-    color: $text-color;
-    font-size: 12px;
+  color: rgba(202, 202, 202, 0.8);
+  font-size: 12px;
 }
 
 .text_about {
-    margin: 0 auto;
-    width: 100%;
-    height: 235px;
-    overflow-y: auto;
+  margin: 0 auto;
+  width: 100%;
+  height: 235px;
+  overflow-y: auto;
 }
 
 .text-about {
-    font-size: 14px;
-    color: $text-color;
+  font-size: 14px;
+  color: rgba(202, 202, 202, 0.8);
 }
 
 .progress-text {
-    color: $text-color;
+  color: rgba(202, 202, 202, 0.8);
 }
 
 .footer-text {
-    font-size: 14px;
-    color: white;
+  font-size: 14px;
+  color: white;
 }
 
-// Title and Card Typography
+// Typography sizes
 .title-fs {
-    font-size: 17px;
+  font-size: 17px;
 }
 
 .title-text {
-    font-size: 16px;
+  font-size: 16px;
 }
 
 .card-title {
-    font-size: 17px;
+  font-size: 17px;
 }
 
 .card-text {
+  font-size: 12px;
+}
+
+// Animation classes
+.section {
+  opacity: 0;
+}
+
+// Modal backgrounds
+.black_bg {
+  position: fixed;
+  background-color: #000000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.text_edit {
+  font-family: "PlayfairDisplay-Bold", system-ui;
+  font-size: 50px;
+  color: #ffffff;
+}
+
+.hide {
+  background-color: #000000;
+  overflow: hidden;
+  
+  .text {
+    transform: translateY(100%);
+    display: inline-block;
+    margin-top: 2rem;
+  }
+}
+
+.gray_bg {
+  position: fixed;
+  background-color: rgba(6, 6, 6, 0.664);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: translateY(100%);
+}
+
+// Footer styles
+footer {
+  div {
+    button {
+      padding: 3px;
+      border: none;
+      background: none;
+    }
+  }
+}
+
+// Progress circle styles
+.container {
+  width: 55px;
+  height: 55px;
+  font-size: 14px;
+  margin: 0;
+  padding: 0 3px;
+}
+
+.circular-progress {
+  position: relative;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+
+  &:before {
+    content: "";
+    position: absolute;
+    height: 84%;
+    width: 84%;
+    background-color: rgb(16, 26, 43);
+    border-radius: 50%;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.55);
+  }
+}
+
+.value-container {
+  position: relative;
+  color: #ffffff;
+}
+
+// Splide slider styles
+.splide {
+  min-width: 150px;
+  width: 100%;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    width: 225px;
+    height: 200px;
+    border-radius: 0.5rem;
+    object-fit: cover;
+  }
+}
+
+// SVG styles
+button {
+  a {
+    svg {
+      path {
+        fill: #ffffff;
+        
+        &:hover {
+          fill: rgb(219, 165, 7);
+        }
+      }
+    }
+  }
+}
+
+// Media queries
+@media (max-width: 991.98px) {
+  div {
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  .text-about,
+  .text_about {
     font-size: 12px;
+  }
+
+  .text_about {
+    height: 200px;
+  }
+
+  .fs-control {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 300px) {
+  li {
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .splide {
+    min-width: 100px;
+    height: 200px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .footer-text {
+    font-size: 12px;
+  }
 } 
