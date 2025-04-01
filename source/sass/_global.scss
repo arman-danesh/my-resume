@@ -1,0 +1,179 @@
+/**
+ * Global styles for the resume website
+ * Contains variables, base styles, and common utilities
+ */
+
+// Color Variables
+// These variables store commonly used colors throughout the website
+$golden-color: rgba(219, 165, 7, 100%);    // Primary accent color
+$dark-bg: rgba(16, 26, 43, 100%);         // Dark background color
+$text-color: rgba(202, 202, 202, 80%);    // Text color for content
+$card-bg: rgba(33, 33, 40, 100%);         // Background color for cards
+$header-bg: rgba(33, 33, 40, 80%);        // Background color for header
+$footer-bg: rgba(33, 33, 40, 80%);        // Background color for footer
+
+// Custom Scrollbar Styling
+// Styles for the website's scrollbar to match the design theme
+::-webkit-scrollbar {
+    width: 5px;
+    scroll-behavior: smooth;
+    
+    &-track {
+        box-shadow: inset 0 0 5px grey;
+        border-radius: 10px;
+    }
+    
+    &-thumb {
+        background: $golden-color;
+        border-radius: 10px;
+    }
+}
+
+// Base Styles
+// Basic styles for the body element
+body {
+    padding: 0;
+    margin: 0;
+    direction: ltr;
+}
+
+// Custom Font Declarations
+// Loading custom fonts for the website
+@font-face {
+    font-family: font-strong;
+    src: url("../font/Poppins-Medium.ttf");
+}
+
+@font-face {
+    font-family: font-md;
+    src: url("../font/Poppins-Light.ttf");
+}
+
+@font-face {
+    font-family: PlayfairDisplay-Bold;
+    src: url("../font/PlayfairDisplay-Bold.ttf");
+}
+
+// Font Utility Classes
+// Classes for applying different font families
+.font-bold {
+    font-family: font-strong, system-ui;
+}
+
+.font-Regular {
+    font-family: font-md, system-ui;
+}
+
+// Layout and Container Styles
+// Styles for main layout containers and spacing
+.control {
+    max-width: 2250px;
+    width: 100%;
+    height: 100%;
+    max-height: 2500px;
+}
+
+// Utility Classes
+// Reusable classes for common styles
+hr {
+    background-color: $golden-color;
+    color: $golden-color;
+    max-height: 5px;
+    min-height: 5px;
+    border: none;
+    margin-top: 1rem;
+}
+
+.golden {
+    color: $golden-color;
+}
+
+.bg-golden {
+    background-color: $golden-color;
+}
+
+// Progress Bar Styles
+.progress-sm {
+    height: 0.5rem !important;
+    background-color: $dark-bg;
+}
+
+// Card and Section Backgrounds
+.rs {
+    background-color: rgba(22, 22, 26, 70%);
+}
+
+.rs-header {
+    min-height: 172px;
+    background-color: $header-bg;
+}
+
+// Positioning Classes
+.circle-position {
+    bottom: -4%;
+    right: 0%;
+}
+
+.footer-size {
+    height: 35px;
+    background: $footer-bg;
+}
+
+.card-color {
+    background-color: $card-bg;
+}
+
+.fix {
+    direction: ltr;
+}
+
+// Typography Styles
+// Text-related styles and utilities
+.text_justify {
+    text-align: justify;
+    text-justify: inter-word;
+    word-spacing: 1px;
+}
+
+.text-custom {
+    color: $text-color;
+    font-size: 12px;
+}
+
+.text_about {
+    margin: 0 auto;
+    width: 100%;
+    height: 235px;
+    overflow-y: auto;
+}
+
+.text-about {
+    font-size: 14px;
+    color: $text-color;
+}
+
+.progress-text {
+    color: $text-color;
+}
+
+.footer-text {
+    font-size: 14px;
+    color: white;
+}
+
+// Title and Card Typography
+.title-fs {
+    font-size: 17px;
+}
+
+.title-text {
+    font-size: 16px;
+}
+
+.card-title {
+    font-size: 17px;
+}
+
+.card-text {
+    font-size: 12px;
+} 

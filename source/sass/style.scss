@@ -1,0 +1,195 @@
+/**
+ * Main SASS stylesheet for the resume website
+ * This file imports global styles and contains component-specific styles
+ */
+
+// Import global styles and variables
+@import 'variables';
+@import 'global';
+
+// Loading Screen Styles
+// Styles for the initial loading screen animation
+.section {
+    opacity: 0;
+}
+
+.black_bg {
+    position: fixed;
+    background-color: $black;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.text_edit {
+    font-family: $font-playfair;
+    font-size: $font-size-xxl;
+    color: $white;
+}
+
+.hide {
+    background-color: $black;
+    overflow: hidden;
+    
+    .text {
+        transform: translateY(100%);
+        display: inline-block;
+        margin-top: $spacing-xl;
+    }
+}
+
+.gray_bg {
+    position: fixed;
+    background-color: $gray-bg;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: translateY(100%);
+}
+
+// Footer Styles
+// Styles for the website footer and its components
+footer {
+    div {
+        button {
+            padding: $spacing-xs;
+            border: none;
+            background: none;
+        }
+    }
+}
+
+// Circular Progress Bar Component
+// Styles for the circular progress indicators
+.container {
+    width: $container-size;
+    height: $container-size;
+    font-size: $font-size-md;
+    margin: 0;
+    padding: 0 $spacing-xs;
+}
+
+.circular-progress {
+    position: relative;
+    height: $circular-progress-size;
+    width: $circular-progress-size;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    
+    &:before {
+        content: "";
+        position: absolute;
+        height: $circular-progress-inner;
+        width: $circular-progress-inner;
+        background-color: $dark-bg;
+        border-radius: 50%;
+        box-shadow: 0px 0px 2px rgba($black, 0.55);
+    }
+}
+
+.value-container {
+    position: relative;
+    color: $white;
+}
+
+// Image Slider Styles
+// Styles for the Splide slider component
+.splide {
+    min-width: $splide-min-width;
+    width: 100%;
+    height: $splide-height;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    img {
+        max-width: $image-max-width;
+        height: $image-height;
+        border-radius: $border-radius-sm;
+        object-fit: cover;
+    }
+}
+
+// Social Media Icons
+// Styles for footer social media icons and hover effects
+button {
+    a {
+        svg {
+            path {
+                fill: $white;
+                
+                &:hover {
+                    fill: $golden-color;
+                }
+            }
+        }
+    }
+}
+
+// Responsive Design
+// Media queries for different screen sizes
+@media (max-width: $breakpoint-lg) {
+    // Tablet and smaller devices
+    div svg {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .text-about,
+    .title-fs,
+    .card-title {
+        font-size: $font-size-base;
+    }
+    
+    .text_about {
+        height: $text-about-height-mobile;
+    }
+    
+    .fs-control,
+    .title-text,
+    .text-custom,
+    .text-about,
+    .card-text {
+        font-size: $font-size-sm;
+    }
+}
+
+@media (max-width: $breakpoint-sm) {
+    // Small mobile devices
+    li img {
+        max-width: $image-max-width-mobile;
+        min-width: $image-min-width-mobile;
+        width: 100%;
+        height: $image-height-mobile;
+    }
+    
+    .splide {
+        min-width: $splide-min-width;
+        width: 100%;
+        height: $splide-height-mobile;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media (max-width: $breakpoint-md) {
+    // Medium-sized devices
+    .footer-text {
+        font-size: $font-size-sm;
+        text-align: center;
+    }
+} 

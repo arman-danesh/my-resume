@@ -1,0 +1,70 @@
+/**
+ * Variables for the resume website
+ * Contains all numeric values, colors, and common styles
+ */
+
+// Colors
+$golden-color: rgba(219, 165, 7, 100%);
+$dark-bg: rgba(16, 26, 43, 100%);
+$text-color: rgba(202, 202, 202, 80%);
+$card-bg: rgba(33, 33, 40, 100%);
+$header-bg: rgba(33, 33, 40, 80%);
+$footer-bg: rgba(33, 33, 40, 80%);
+$black: #000000;
+$white: #ffffff;
+$gray-bg: rgba(6, 6, 6, 0.664);
+
+// Typography
+$font-size-base: 12px;
+$font-size-sm: 10px;
+$font-size-md: 14px;
+$font-size-lg: 16px;
+$font-size-xl: 17px;
+$font-size-xxl: 50px;
+
+// Spacing
+$spacing-xs: 3px;
+$spacing-sm: 5px;
+$spacing-md: 10px;
+$spacing-lg: 1rem;
+$spacing-xl: 2rem;
+
+// Layout
+$max-width: 2250px;
+$max-height: 2500px;
+$header-height: 172px;
+$footer-height: 35px;
+$text-about-height: 235px;
+$text-about-height-mobile: 100px;
+
+// Component Sizes
+$progress-height: 0.5rem;
+$scrollbar-width: 5px;
+$container-size: 55px;
+$circular-progress-size: 50px;
+$circular-progress-inner: 84%;
+$splide-min-width: 150px;
+$splide-height: 250px;
+$splide-height-mobile: 180px;
+$image-max-width: 225px;
+$image-height: 200px;
+$image-max-width-mobile: 200px;
+$image-min-width-mobile: 100px;
+$image-height-mobile: 130px;
+
+// Border Radius
+$border-radius-sm: 0.5rem;
+$border-radius-md: 10px;
+
+// Breakpoints
+$breakpoint-lg: 991.98px;
+$breakpoint-md: 1100px;
+$breakpoint-sm: 300px;
+
+// Font Families
+$font-strong: 'font-strong', system-ui;
+$font-regular: 'font-md', system-ui;
+$font-playfair: 'PlayfairDisplay-Bold', system-ui;
+
+// Transitions
+$transition-duration: 0.3s; 
