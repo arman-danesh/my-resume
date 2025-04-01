@@ -2,7 +2,7 @@
     "name": "Arman Danesh Portfolio",
     "short_name": "Arman Portfolio",
     "description": "Personal portfolio website of Arman Danesh",
-    "start_url": "/",
+    "start_url": "./",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#DBA507",
