@@ -56,7 +56,7 @@ npm install
 
 4. use build command to build typeScript & Sass
 ```bash
-npm build
+npm run build
 ```
 
 ## 📁 Project Structure
