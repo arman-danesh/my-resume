@@ -71,6 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
             perMove: 1,
             breakpoints: {
                 1550: { perPage: 4 },
+                1400: { perPage: 3 },
                 1200: { perPage: 3 },
                 760: { perPage: 2 },
                 576: { perPage: 1 },
@@ -135,7 +136,6 @@ interface LanguageContent {
     footer_text: string;
 }
 
-// Language class definition
 class LanguageManager implements LanguageContent {
     constructor(
         public btn: string,

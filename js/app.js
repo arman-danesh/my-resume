@@ -63,6 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
             perMove: 1,
             breakpoints: {
                 1550: { perPage: 4 },
+                1400: { perPage: 3 },
                 1200: { perPage: 3 },
                 760: { perPage: 2 },
                 576: { perPage: 1 },
@@ -103,7 +104,6 @@ function initializeProgressBars() {
         }
     });
 }
-// Language class definition
 class LanguageManager {
     constructor(btn, name, sub, l_title, about_me, info_t, info_a, degree_t, degree_a, con_t, r_title, card_t, card_a, progress_t, progress_t_c, footer_text) {
         this.btn = btn;
