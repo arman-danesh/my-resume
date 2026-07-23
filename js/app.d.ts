@@ -1,5 +1,5 @@
 /**
- * Main Application Entry Point
- * Uses i18next for internationalization and modular component system
+ * Main TypeScript file for the resume website
+ * Animations, mobile detection, and language switching.
  */
 export {};
