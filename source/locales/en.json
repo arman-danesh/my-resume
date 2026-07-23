@@ -1,0 +1,81 @@
+{
+  "common": {
+    "languageButton": "FA",
+    "name": "ARMAN DANESH",
+    "role": {
+      "primary": "UI/UX Designer",
+      "secondary": "Front-End Developer"
+    }
+  },
+  "header": {
+    "titles": {
+      "about": "About me",
+      "information": "Information",
+      "learning": "Learning",
+      "contact": "Contact Me"
+    }
+  },
+  "about": {
+    "title": "About me",
+    "description": "I got my associate degree in 2017 and started to gain skills and experience as a freelancer in the field of logo design, icon, ui/ux, banner and sharp construction, WordPress template, exclusive template and content production, which some projects It has been placed in my projects category as a sample of my work. These activities led me to be interested in design and programming. My great interest in programming made me trying to always keep my information updated in the field of programming. I like problem solving and complex projects are interesting and fun for me."
+  },
+  "information": {
+    "title": "Information",
+    "resident": "Resident:",
+    "residentValue": "IRAN, Tehran",
+    "age": "Age:",
+    "ageValue": "24",
+    "militaryService": "Military service:",
+    "militaryServiceValue": "It ended in 2022"
+  },
+  "education": {
+    "title": "Learning",
+    "degree": "Degree:",
+    "degreeValue": "Associate Degree",
+    "university": "University name:",
+    "universityValue": "University of Applied Sciences & Technology",
+    "skills": {
+      "dotnet": ".net:",
+      "mongodb": "mongodb:",
+      "mysql": "mysql:"
+    }
+  },
+  "contact": {
+    "title": "Contact Me",
+    "phone": "Phone Number:",
+    "telegram": "Telegram:",
+    "email": "Gmail:"
+  },
+  "services": {
+    "title": "What I Offer",
+    "offerings": {
+      "frontend": "Front-end",
+      "uiux": "UI/UX Designer",
+      "logo": "Logo Designer",
+      "seo": "SEO"
+    },
+    "descriptions": {
+      "frontend": "I will be responsible for implementing visual elements that users see and interact within a web application, which makes my role crucial for the success of company business.",
+      "uiux": "UX designers seek to develop and improve the quality interaction between the user and the company, while UI designers introduce the brands power and visual assets to users.",
+      "logo": "A well-designed logo or icon is the first point of identification of a software or web for customers and an important basis for branding a company.",
+      "seo": "SEO consists of several elements and its main goal is to show value to search engines that allows pages to rank high and reach the first page of search engines."
+    }
+  },
+  "projects": {
+    "title": "My Projects"
+  },
+  "skills": {
+    "title": "Professional Skills",
+    "technical": {
+      "title": "Technical Skills",
+      "items": ["HTML5:", "CSS:", "JavaScript:", "Bootstrap:", "Github:", "TypeScript", "SASS/LESS:", "Figma & XD:", "PhotoShop:", "Illustrator:", "WordPress:", "SEO:", "React.js"]
+    },
+    "soft": {
+      "title": "Soft Skills",
+      "items": ["Team Work:", "Fast learner:", "Creation:", "Innovation:"]
+    }
+  },
+  "footer": {
+    "copyright": "2023©Any copying of the template design, the content of my resume in any way will be prosecuted"
+  }
+}

@@ -1,69 +1,316 @@
 /**
  * Main TypeScript file for the resume website
- * Contains animations, mobile detection, and language switching functionality
+ * Animations, mobile detection, and language switching.
  */
 
-// Type declarations for external libraries
+import { initI18n } from './i18n';
+import type { TranslationData, Project } from './interfaces';
+
+// ============================================
+// TYPE DECLARATIONS (third-party globals from CDN scripts)
+// ============================================
+
 declare const gsap: any;
 declare const Splide: any;
 
-// Initialize GSAP timeline for animations
-const TimeLINE = gsap.timeline({defaults: {ease: "power1.out"}});
+// ============================================
+// STATE
+// ============================================
 
-// Initial page load animation sequence
-window.addEventListener('DOMContentLoaded', () => {
-    // Animate welcome text and background transitions
-    TimeLINE.to(".text", {opacity: 1, y: "-10", duration: 0.75, stagger: 0.25});
-    TimeLINE.to(".gray_bg", {y: "-100%", duration: 1.25, delay: 0.5});
-    TimeLINE.to(".black_bg", {y: "-100%", duration: 1}, "-=1");
-    TimeLINE.to(".section", {opacity: 1});
-    TimeLINE.fromTo(".text_left", {opacity: 0}, {opacity: 1, duration: 1, stagger: 0.2}, "-=0.5");
-    TimeLINE.fromTo(".text_right", {opacity: 0}, {opacity: 1, duration: 1, stagger: 0.15}, "-=2.25");
-});
+let currentLanguage: string = 'en';
+const timeline = gsap.timeline({ defaults: { ease: 'power1.out' } });
 
-/**
- * Detects the mobile operating system of the user
- * @returns {string} The detected OS ('iOS', 'Android', or 'unknown')
- */
+let translationData: TranslationData | null = null;
+let i18nInstance: any = null;
+
+// ============================================
+// DOM REFERENCES
+// ============================================
+
+const htmlDir = document.getElementById('dir') as HTMLElement;
+const htmlBtn = document.getElementById('btn') as HTMLElement;
+const htmlName = document.getElementById('name') as HTMLElement;
+const htmlSub = document.getElementsByName('sub') as NodeListOf<HTMLElement>;
+const htmlLTitle = document.getElementsByName('l_title') as NodeListOf<HTMLElement>;
+const htmlAboutMe = document.getElementById('about_me') as HTMLElement;
+const htmlInfoT = document.getElementsByName('info_t') as NodeListOf<HTMLElement>;
+const htmlInfoA = document.getElementsByName('info_a') as NodeListOf<HTMLElement>;
+const htmlDegreeT = document.getElementsByName('degree_t') as NodeListOf<HTMLElement>;
+const htmlDegreeA = document.getElementsByName('degree_a') as NodeListOf<HTMLElement>;
+const htmlConT = document.getElementsByName('con_t') as NodeListOf<HTMLElement>;
+const htmlRTitle = document.getElementsByName('r_title') as NodeListOf<HTMLElement>;
+const htmlCardT = document.getElementsByName('card_t') as NodeListOf<HTMLElement>;
+const htmlCardA = document.getElementsByName('card_a') as NodeListOf<HTMLElement>;
+const htmlProgressT = document.getElementsByName('progress_t') as NodeListOf<HTMLElement>;
+const htmlProgressTC = document.getElementsByName('progress_t_c') as NodeListOf<HTMLElement>;
+const htmlFooterText = document.getElementById('footer_text') as HTMLElement;
+
+// ============================================
+// UTILITY FUNCTIONS
+// ============================================
+
 function getMobileOperatingSystem(): string {
-    const userAgent = navigator.userAgent || navigator.vendor || (window as any).opera;
-    if (/iPad|iPhone|iPod/.test(userAgent)) {
-        return 'iOS';
-    } else if (/android/i.test(userAgent)) {
-        return 'Android';
-    }
+    const userAgent = navigator.userAgent || navigator.vendor || '';
+    if (/iPad|iPhone|iPod/.test(userAgent)) return 'iOS';
+    if (/android/i.test(userAgent)) return 'Android';
     return 'unknown';
 }
 
-/**
- * Sets up footer links with appropriate URLs based on device type
- */
-function onLoad(): void {
-    const urlLink1 = "https://matrix.to/#/@arman458:matrix.org";
-    const urlLink2 = "http://t.me/ArmanDaneshwork";
-    let urlLink3 = "https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=armandaneshwork@gmail.com&body=my-text";
-    
-    // Use mailto: for mobile devices
+function setupFooterLinks(): void {
+    const urlLink1 = 'https://www.linkedin.com/in/arman-danesh-a6aaab2bb/';
+    const urlLink2 = 'http://t.me/ArmanDaneshwork';
+    let urlLink3 = 'https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=armandaneshwork@gmail.com&body=my-text';
+
     if (getMobileOperatingSystem() !== 'unknown') {
-        urlLink3 = "mailto:armandaneshwork@gmail.com";
+        urlLink3 = 'mailto:armandaneshwork@gmail.com';
     }
-    
-    // Set href attributes for footer links
-    const link1 = document.getElementById('yourLink1');
-    const link2 = document.getElementById('yourLink2');
-    const link3 = document.getElementById('yourLink3');
-    
-    if (link1) link1.setAttribute('href', urlLink1);
-    if (link2) link2.setAttribute('href', urlLink2);
-    if (link3) link3.setAttribute('href', urlLink3);
+
+    document.getElementById('yourLink1')?.setAttribute('href', urlLink1);
+    document.getElementById('yourLink2')?.setAttribute('href', urlLink2);
+    document.getElementById('yourLink3')?.setAttribute('href', urlLink3);
 }
 
-// Initialize footer links on page load
-window.addEventListener('load', onLoad);
+function initializeProgressBars(): void {
+    const progressBars = document.getElementsByName('circular-progress');
+    const valueContainers = document.getElementsByName('value-container');
+    const endValues = [90, 90, 85]; // matches the "Learning" trio in data.json (degree_t[2..4])
+    const speed = 15;
 
-// Initialize Splide slider
+    progressBars.forEach((progressBar, i) => {
+        if (i >= endValues.length) return;
+        let progressValue = 0;
+        const progressEndValue = endValues[i];
+        const valueContainer = valueContainers[i];
+
+        const progress = setInterval(() => {
+            progressValue++;
+            if (valueContainer) valueContainer.textContent = `${progressValue}%`;
+            if (progressBar instanceof HTMLElement) {
+                progressBar.style.background = `conic-gradient(
+                    #DBA507 ${progressValue * 3.6}deg,
+                    #101A2B ${progressValue * 3.6}deg
+                )`;
+            }
+            if (progressValue === progressEndValue) clearInterval(progress);
+        }, speed);
+    });
+}
+
+// ============================================
+// LANGUAGE FUNCTIONS
+// ============================================
+
+function getTranslation(): TranslationData | null {
+    if (translationData) return translationData;
+    if (!i18nInstance) {
+        console.error('i18n not initialized yet');
+        return null;
+    }
+
+    const resources = i18nInstance.services.resourceStore.data;
+    const currentLang = i18nInstance.language || 'en';
+
+    const translation =
+        resources?.[currentLang]?.translation ??
+        resources?.en?.translation ??
+        i18nInstance.t('translation', { returnObjects: true, defaultValue: null });
+
+    if (!translation || typeof translation !== 'object') {
+        console.error('Translation data is not valid:', translation);
+        return null;
+    }
+
+    translationData = translation as TranslationData;
+    return translationData;
+}
+
+function updateProgressBars(progressValues: number[], progressLabels: string[]): void {
+    if (!progressLabels?.length || !progressValues?.length) return;
+
+    htmlProgressT.forEach((el, i) => {
+        if (el && progressLabels[i]) el.innerHTML = progressLabels[i];
+        const parentDiv = el?.closest('div');
+        const progressBar = parentDiv?.querySelector('.progress-bar');
+        if (progressBar && progressValues[i] !== undefined) {
+            (progressBar as HTMLElement).style.width = `${progressValues[i]}%`;
+            progressBar.setAttribute('aria-valuenow', String(progressValues[i]));
+            const textElement = parentDiv?.querySelector('.progress-text');
+            if (textElement) textElement.textContent = `${progressValues[i]}%`;
+        }
+    });
+}
+
+function updatePersonalSkills(values: number[], labels: string[]): void {
+    if (!labels?.length || !values?.length) return;
+
+    htmlProgressTC.forEach((el, i) => {
+        if (el && labels[i]) el.innerHTML = labels[i];
+        const parentDiv = el?.closest('div');
+        const progressBar = parentDiv?.querySelector('.progress-bar');
+        if (progressBar && values[i] !== undefined) {
+            (progressBar as HTMLElement).style.width = `${values[i]}%`;
+            progressBar.setAttribute('aria-valuenow', String(values[i]));
+            const textElement = parentDiv?.querySelector('.progress-text');
+            if (textElement) textElement.textContent = `${values[i]}%`;
+        }
+    });
+}
+
+/**
+ * Generates project cards. Fixed: Live Demo / GitHub buttons are only rendered
+ * when the project actually has that URL — most of the real projects are
+ * client work with no public repo, so a dead "GitHub" button no longer shows.
+ */
+function generateProjectCards(): void {
+    const translation = getTranslation();
+    const container = document.getElementById('projects-container');
+    if (!container) {
+        console.error('Projects container not found');
+        return;
+    }
+
+    if (!translation?.projects?.length) {
+        container.innerHTML = '<div class="col-12 text-center text-muted">No projects available</div>';
+        return;
+    }
+
+    container.innerHTML = '';
+
+    translation.projects.forEach((project: Project) => {
+        const col = document.createElement('div');
+        col.className = 'col-lg-4 col-md-6 col-12';
+
+        const imagePath = project.image || 'images/image/placeholder.jpg';
+
+        const liveBtn = project.live_url
+            ? `<a name="project_live_btn" href="${project.live_url}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-golden btn-sm flex-grow-1">Live Demo</a>`
+            : '';
+        const githubBtn = project.github_url
+            ? `<a name="project_github_btn" href="${project.github_url}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-golden btn-sm flex-grow-1">GitHub</a>`
+            : '';
+
+        col.innerHTML = `
+            <div class="card project-card card-color shadow text-white rounded-3 h-100">
+                <div class="card-body d-flex flex-column">
+                    <div class="project-image-container mb-3">
+                        <img name="project_image" src="${imagePath}" alt="${project.title}" class="img-fluid rounded-2 project-img" onerror="this.src='images/image/profile-image.jpg'">
+                    </div>
+                    <h4 name="project_title" class="card-title font-bold">${project.title}</h4>
+                    <p name="project_description" class="card-text text-custom small">${project.description}</p>
+                    <div name="project_technologies" class="d-flex gap-2 flex-wrap mt-auto">
+                        ${project.technologies.map((tech) => `<span class="badge bg-golden text-dark">${tech}</span>`).join('')}
+                    </div>
+                    ${(liveBtn || githubBtn) ? `<div class="d-flex gap-2 mt-3">${liveBtn}${githubBtn}</div>` : ''}
+                </div>
+            </div>
+        `;
+
+        container.appendChild(col);
+    });
+}
+
+function updateElements(elements: NodeListOf<HTMLElement>, values: string[] | undefined): void {
+    if (!values?.length) return;
+    elements.forEach((el, i) => {
+        if (el && values[i] !== undefined && values[i] !== null) el.innerHTML = values[i];
+    });
+}
+
+function applyLanguage(lang: string): void {
+    if (!i18nInstance) {
+        console.error('i18n not available');
+        return;
+    }
+
+    i18nInstance.changeLanguage(lang);
+    translationData = null; // force reload for the new language
+
+    const translation = getTranslation();
+    if (!translation) {
+        console.error('Translation data not available');
+        return;
+    }
+
+    const isRTL = lang === 'fa';
+    if (htmlDir) htmlDir.style.direction = isRTL ? 'rtl' : 'ltr';
+
+    if (htmlBtn) htmlBtn.innerHTML = translation.btn || 'FA';
+    if (htmlName) htmlName.innerHTML = translation.name || 'ARMAN DANESH';
+
+    updateElements(htmlSub, translation.sub);
+    updateElements(htmlLTitle, translation.l_title);
+    if (htmlAboutMe && translation.about_me) htmlAboutMe.innerHTML = translation.about_me;
+    updateElements(htmlInfoT, translation.info_t);
+    updateElements(htmlInfoA, translation.info_a);
+    updateElements(htmlDegreeT, translation.degree_t);
+    updateElements(htmlDegreeA, translation.degree_a);
+    updateElements(htmlConT, translation.con_t);
+    updateElements(htmlRTitle, translation.r_title);
+    updateElements(htmlCardT, translation.card_t);
+    updateElements(htmlCardA, translation.card_a);
+
+    if (translation.progress_t?.length && translation.progress_values?.length) {
+        updateProgressBars(translation.progress_values, translation.progress_t);
+    }
+    if (translation.progress_t_c?.length && translation.progress_c_values?.length) {
+        updatePersonalSkills(translation.progress_c_values, translation.progress_t_c);
+    }
+    if (htmlFooterText && translation.footer_text) htmlFooterText.innerHTML = translation.footer_text;
+
+    generateProjectCards();
+}
+
+function lan(): void {
+    const newLang = currentLanguage === 'en' ? 'fa' : 'en';
+
+    timeline.to('.section', { opacity: 0, stagger: 0.25 });
+
+    setTimeout(() => {
+        applyLanguage(newLang);
+        currentLanguage = newLang;
+
+        timeline.to('.section', { opacity: 1, stagger: 0.25 });
+        timeline.fromTo('.text_left', { opacity: 0 }, { opacity: 1, stagger: 0.2 }, '-=1');
+        timeline.fromTo('.text_right', { opacity: 0 }, { opacity: 1, stagger: 0.15 }, '-=1');
+    }, 1000);
+}
+
+// ============================================
+// INITIALIZATION
+// ============================================
+
+async function initializeApp(): Promise<void> {
+    try {
+        i18nInstance = await initI18n();
+        if (!i18nInstance) throw new Error('i18n initialization failed');
+
+        currentLanguage = 'en';
+
+        timeline.to('.text', { opacity: 1, y: '-10', duration: 0.75, stagger: 0.25 });
+        timeline.to('.gray_bg', { y: '-100%', duration: 1.25, delay: 0.5 });
+        timeline.to('.black_bg', { y: '-100%', duration: 1 }, '-=1');
+        timeline.to('.section', { opacity: 1 });
+        timeline.fromTo('.text_left', { opacity: 0 }, { opacity: 1, duration: 1, stagger: 0.2 }, '-=0.5');
+        timeline.fromTo('.text_right', { opacity: 0 }, { opacity: 1, duration: 1, stagger: 0.15 }, '-=2.25');
+
+        applyLanguage('en');
+        setupFooterLinks();
+
+        console.log('Application initialized successfully');
+    } catch (error) {
+        console.error('Error initializing application:', error);
+    }
+}
+
+// ============================================
+// EVENT LISTENERS
+// ============================================
+
 document.addEventListener('DOMContentLoaded', () => {
-    onLoad();
+    initializeApp();
+});
+
+window.addEventListener('load', () => {
     const splideElement = document.getElementById('image-carousel');
     if (splideElement) {
         new Splide('#image-carousel', {
@@ -75,217 +322,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 1200: { perPage: 3 },
                 760: { perPage: 2 },
                 576: { perPage: 1 },
-                420: { perPage: 1 }
+                420: { perPage: 1 },
             },
         }).mount();
     }
     initializeProgressBars();
 });
 
-/**
- * Initializes and animates circular progress bars
- */
-function initializeProgressBars(): void {
-    const progressBars = document.getElementsByName("circular-progress");
-    const valueContainers = document.getElementsByName("value-container");
-    const endValues = [65, 75, 85];
-    const speed = 15;
-
-    progressBars.forEach((progressBar, i) => {
-        if (i < endValues.length) {
-            let progressValue = 0;
-            const progressEndValue = endValues[i];
-            const valueContainer = valueContainers[i];
-
-            const progress = setInterval(() => {
-                progressValue++;
-                if (valueContainer) {
-                    valueContainer.textContent = `${progressValue}%`;
-                }
-                if (progressBar instanceof HTMLElement) {
-                    progressBar.style.background = `conic-gradient(
-                        #DBA507 ${progressValue * 3.6}deg,
-                        #101A2B ${progressValue * 3.6}deg
-                    )`;
-                }
-                if (progressValue === progressEndValue) {
-                    clearInterval(progress);
-                }
-            }, speed);
-        }
-    });
-}
-
-// Language switching functionality
-interface LanguageContent {
-    btn: string;
-    name: string;
-    sub: string[];
-    l_title: string[];
-    about_me: string;
-    info_t: string[];
-    info_a: string[];
-    degree_t: string[];
-    degree_a: string[];
-    con_t: string[];
-    r_title: string[];
-    card_t: string[];
-    card_a: string[];
-    progress_t: string[];
-    progress_t_c: string[];
-    footer_text: string;
-}
-
-class LanguageManager implements LanguageContent {
-    constructor(
-        public btn: string,
-        public name: string,
-        public sub: string[],
-        public l_title: string[],
-        public about_me: string,
-        public info_t: string[],
-        public info_a: string[],
-        public degree_t: string[],
-        public degree_a: string[],
-        public con_t: string[],
-        public r_title: string[],
-        public card_t: string[],
-        public card_a: string[],
-        public progress_t: string[],
-        public progress_t_c: string[],
-        public footer_text: string
-    ) {}
-}
-
-// Track current language state
-let en = true;
-
-// Content for English and Farsi languages
-const about_e = "I got my associate degree in 2017 and started to gain skills and experience as a freelancer in the field of logo design, icon, ui/ux, banner and sharp construction, WordPress template, exclusive template and content production, which some projects It has been placed in my projects category as a sample of my work. These activities led me to be interested in design and programming. My great interest in programming made me trying to always keep my information updated in the field of programming. I like problem solving and complex projects are interesting and fun for me.";
-const about_f = "من مدرک کاردانی ناپوسته خود را در سال 1395 گرفته و شروع به کسب مهارت و تجربه به عنوان فریلنسر در زمینه طراحی لوگو ، آیکن ، ui/ux ، بنر و ساخت تیز، قالب وردپرس، قالب اختصاصی و تولید محتوا، که برخی از پروژه ها در دسته بندی پروژه های من به عنوان نمونه کارهای من قرار داده شده است.این فعالیت ها علاقه مندی من را به طراحی و برنامه نویسی سوق داد.علاقه زیاد من به برنامه نویسی باعث شد که سعی کنم همیشه اطلاعات خود را در حوزه برنامه نویسی به روز نگه دارم.حل مسئله را دوست دارم و پروژه هایی که پیچیدگی داشته باشد ، برایم جذاب و سرگرم کننده است.";
-
-// Card content in English and Farsi
-const card_e = [
-    'i will be responsible for implementing visual elements that users see and interact within a web application, which makes my role crucial for the success of compeny business.',
-    'UX designers seek to develop and improve the quality interaction between the user and the company, while UI designers introduce the brands power and visual assets to users.',
-    'A well-designed logo or icon is the first point of identification of a software or web for customers and an important basis for branding a company.',
-    'SEO consists of several elements and its main goal is to show value to search engines that allows pages to rank high and reach the first page of search engines.'
-];
-
-const card_f = [
-    'به‌عنوان یک توسعه‌دهنده فرانت‌اند،من مسئول پیاده‌سازی عناصر بصری هستم که کاربران می‌بینند و در یک برنامه وب با هم تعامل دارند، که نقش من را برای موفقیت کسب‌وکار شرکت بسیار مهم می‌کند.',
-    'طراحان UX به دنبال توسعه و بهبود تعامل کیفیت بین کاربر و شرکت هستند، در حالی که طراحان UI قدرت و دارایی های بصری برند را به کاربران معرفی می کنند.',
-    'یک لوگو یا ایکن خوب طراحی شده اولین نقطه شناسایی یک نرم افزار یا وب برای مشتریان و پایه مهمی برای برندسازی یک شرکت است.',
-    'سئو از چندین عنصر تشکیل شده است و هدف اصلی آن نشان دادن ارزش به موتورهای جستجو است که به صفحات امکان می دهد رتبه بالایی داشته باشند و به صفحه اول موتورهای جستجو برسند.'
-];
-
-// Get DOM elements for language switching
-const html_dir = document.getElementById("dir") as HTMLElement;
-const html_btn = document.getElementById("btn") as HTMLElement;
-const html_name = document.getElementById("name") as HTMLElement;
-const html_sub = document.getElementsByName("sub") as NodeListOf<HTMLElement>;
-const html_l_title = document.getElementsByName("l_title") as NodeListOf<HTMLElement>;
-const html_about_me = document.getElementById("about_me") as HTMLElement;
-const html_info_t = document.getElementsByName("info_t") as NodeListOf<HTMLElement>;
-const html_info_a = document.getElementsByName("info_a") as NodeListOf<HTMLElement>;
-const html_degree_t = document.getElementsByName("degree_t") as NodeListOf<HTMLElement>;
-const html_degree_a = document.getElementsByName("degree_a") as NodeListOf<HTMLElement>;
-const html_con_t = document.getElementsByName("con_t") as NodeListOf<HTMLElement>;
-const html_r_title = document.getElementsByName("r_title") as NodeListOf<HTMLElement>;
-const html_card_t = document.getElementsByName("card_t") as NodeListOf<HTMLElement>;
-const html_card_a = document.getElementsByName("card_a") as NodeListOf<HTMLElement>;
-const html_progress_t = document.getElementsByName("progress_t") as NodeListOf<HTMLElement>;
-const html_progress_t_c = document.getElementsByName("progress_t_c") as NodeListOf<HTMLElement>;
-const html_footer_text = document.getElementById("footer_text") as HTMLElement;
-
-// Define language content
-const english = new LanguageManager(
-    "FA",
-    "ARMAN DANESH",
-    ['UI/UX Designer', 'Front-End Developer'],
-    ['About me', 'information', 'Learning', 'Contact Me'],
-    about_e,
-    ['resident:', 'Age:', 'Military service:'],
-    ['IRAN,Tehran', '24', 'It ended in 2022'],
-    ['degree:', 'university name:', '.net:', 'mongodb:', 'mysql:'],
-    ['Associate Degree', 'University of Applied </br> Sciences & Technology'],
-    ['Phone Number:', 'Telegram:', 'Gmail:'],
-    ['what i offers', 'My Projects', 'Professional Skill', 'My Skill '],
-    ['Front-end', 'Ui/Ux Designer', 'Logo Designer', 'SEO'],
-    [card_e[0], card_e[1], card_e[2], card_e[3]],
-    ['HTML5:', 'CSS:', 'JavaScript:', 'Bootstrap:', 'Github:', 'type script', 'sass / less:', 'Figma & Xd:', 'PhotoShop:', 'Illustrator:', 'Wordpress:', 'SEO:', 'React js'],
-    ['Team Work:', 'Fast learner:', 'Creation:', 'innovation:'],
-    "2023©Any copying of the template design, the content of my resume in any way will be prosecuted"
-);
-
-const farsi = new LanguageManager(
-    "EN",
-    "آرمان دانش",
-    ['طراح UI/UX', 'برنامه نویس فرانت اند'],
-    ['درباره من', 'مشخصات', 'درحال یادگیری', 'تماس با من'],
-    about_f,
-    ['مقیم:', 'سن:', 'خدمت سربازی:'],
-    ['ایران،تهران', '24', 'در سال 1401 به پایان رسید'],
-    ['مدرک:', 'نام دانشگاه:', '.net:', 'mongodb:', 'mysql:'],
-    ['کاردانی', 'مرکز اموزشی علمی </br> کاربردی'],
-    [':شماره همراه', 'تلگرام:', 'ایمیل:'],
-    ['خدماتی که من ارائه می دهم', 'پروزه های من', 'مهارتهای حرفه ای', 'مهارتهای من'],
-    ['فرانت اند', 'طراح Ui/Ux', 'طراح لوگو', 'سئو'],
-    [card_f[0], card_f[1], card_f[2], card_f[3]],
-    ['HTML5:', 'CSS:', 'جاوا اسکریپت:', 'بوت استرپ:', 'Github:', 'type script', 'sass / less:', 'Figma & Xd:', ':فتوشاپ:', 'ایلاستریتور:', 'وردپرس:', 'سئو', 'React js'],
-    ['کار گروهی:', 'یادگیری سریع:', 'خلاق:', 'نوآوری:'],
-    "1402©هرگونه کپی برداری از طرح قالب, مطالب رزومه من به هر نحو، پیگرد قانونی دارد"
-);
-
-/**
- * Switches between English and Farsi languages
- * Includes animation transitions between language changes
- */
-function lan(): void {
-    const content = en ? farsi : english;
-    
-    // Fade out content
-    TimeLINE.to(".section", {opacity: 0, stagger: 0.25});
-    
-    setTimeout(() => {
-        // Update direction and button text
-        if (html_dir) html_dir.style.direction = en ? "rtl" : "ltr";
-        if (html_btn) html_btn.innerHTML = content.btn;
-        if (html_name) html_name.innerHTML = content.name;
-        
-        // Helper function to update arrays of elements
-        const updateElements = (elements: NodeListOf<HTMLElement>, values: string[]) => {
-            elements.forEach((el, i) => {
-                if (el && values[i]) el.innerHTML = values[i];
-            });
-        };
-        
-        // Update all content elements
-        updateElements(html_sub, content.sub);
-        updateElements(html_l_title, content.l_title);
-        if (html_about_me) html_about_me.innerHTML = content.about_me;
-        updateElements(html_info_t, content.info_t);
-        updateElements(html_info_a, content.info_a);
-        updateElements(html_degree_t, content.degree_t);
-        updateElements(html_degree_a, content.degree_a);
-        updateElements(html_con_t, content.con_t);
-        updateElements(html_r_title, content.r_title);
-        updateElements(html_card_t, content.card_t);
-        updateElements(html_card_a, content.card_a);
-        updateElements(html_progress_t, content.progress_t);
-        updateElements(html_progress_t_c, content.progress_t_c);
-        if (html_footer_text) html_footer_text.innerHTML = content.footer_text;
-        
-        // Toggle language state
-        en = !en;
-        
-        // Fade in content with animations
-        TimeLINE.to(".section", {opacity: 1, stagger: 0.25});
-        TimeLINE.fromTo(".text_left", {opacity: 0}, {opacity: 1, stagger: 0.2}, "-=1");
-        TimeLINE.fromTo(".text_right", {opacity: 0}, {opacity: 1, stagger: 0.15}, "-=1");
-    }, 1000);
-}
-
-// Make language switching function globally available
 (window as any).lan = lan;
-
