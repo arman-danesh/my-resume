@@ -1,7 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Github, Linkedin, Send, Mail, Phone, GraduationCap } from "lucide-react";
+import {
+  FaGithub,
+  FaLinkedin,
+  FaTelegram,
+  FaEnvelope,
+  FaPhone,
+  FaGraduationCap,
+} from "react-icons/fa6";
 import { useLanguage } from "@/lib/LanguageContext";
 import { CircularProgress } from "./CircularProgress";
 
@@ -25,19 +32,14 @@ export function Sidebar() {
           {t.languageButton}
         </button>
 
-        <a
-          href="/images/image/profile-image.jpg"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mx-auto mb-4 block h-20 w-20 overflow-hidden rounded-full ring-2 ring-gold/60 ring-offset-2 ring-offset-surface-dark"
-        >
+        <div className="mx-auto mb-3 flex h-20 w-20 items-center justify-center overflow-hidden rounded-full ring-2 ring-gold/60 ring-offset-2 ring-offset-surface-dark">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/images/image/profile-image.jpg"
-            alt={t.name}
+            src="/logo.svg"
+            alt="Arman Danesh logo"
             className="h-full w-full object-cover"
           />
-        </a>
+        </div>
 
         <h1 className="font-display text-xl font-bold tracking-wide text-white">
           {t.name}
@@ -67,7 +69,7 @@ export function Sidebar() {
             {t.information.items.map((item) => (
               <div key={item.label} className="flex items-start justify-between gap-3 text-sm">
                 <dt className="shrink-0 text-white/50">{item.label}</dt>
-                <dd className="text-end text-white/90 break-all">{item.value}</dd>
+                <dd className="break-all text-end text-white/90">{item.value}</dd>
               </div>
             ))}
           </dl>
@@ -77,7 +79,7 @@ export function Sidebar() {
 
         <section>
           <h2 className="mb-3 flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-gold">
-            <GraduationCap size={14} />
+            <FaGraduationCap size={14} />
             {t.education.title}
           </h2>
           <p className="text-sm font-medium text-white/90">{t.education.degree}</p>
@@ -114,7 +116,7 @@ export function Sidebar() {
                 href="tel:+989911537923"
                 className="flex items-center gap-2.5 text-white/80 transition hover:text-gold"
               >
-                <Phone size={15} className="shrink-0 text-gold" />
+                <FaPhone size={14} className="shrink-0 text-gold" />
                 {t.contact.phone}
               </a>
             </li>
@@ -125,7 +127,7 @@ export function Sidebar() {
                 rel="noopener noreferrer"
                 className="flex items-center gap-2.5 text-white/80 transition hover:text-gold"
               >
-                <Send size={15} className="shrink-0 text-gold" />
+                <FaTelegram size={15} className="shrink-0 text-gold" />
                 {t.contact.telegram}
               </a>
             </li>
@@ -134,7 +136,7 @@ export function Sidebar() {
                 href="mailto:armandaneshwork@gmail.com"
                 className="flex items-center gap-2.5 text-white/80 transition hover:text-gold"
               >
-                <Mail size={15} className="shrink-0 text-gold" />
+                <FaEnvelope size={14} className="shrink-0 text-gold" />
                 {t.contact.email}
               </a>
             </li>
@@ -150,7 +152,7 @@ export function Sidebar() {
           aria-label="LinkedIn"
           className="text-white/50 transition hover:text-gold"
         >
-          <Linkedin size={20} />
+          <FaLinkedin size={20} />
         </a>
         <a
           href="https://t.me/ArmanDaneshWork"
@@ -159,7 +161,7 @@ export function Sidebar() {
           aria-label="Telegram"
           className="text-white/50 transition hover:text-gold"
         >
-          <Send size={20} />
+          <FaTelegram size={20} />
         </a>
         <a
           href="https://github.com/arman-danesh"
@@ -168,7 +170,7 @@ export function Sidebar() {
           aria-label="GitHub"
           className="text-white/50 transition hover:text-gold"
         >
-          <Github size={20} />
+          <FaGithub size={20} />
         </a>
       </div>
     </motion.aside>

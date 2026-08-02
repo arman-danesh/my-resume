@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ExternalLink } from "lucide-react";
+import { FaExternalLinkAlt } from "react-icons/fa";
 import { useLanguage } from "@/lib/LanguageContext";
 import { SkillBar } from "./SkillBar";
 import { ServiceCard } from "./ServiceCard";
@@ -20,7 +20,6 @@ export function MainContent() {
       transition={{ duration: 0.55, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
       className="min-w-0 flex-1 rounded-2xl border border-white/5 bg-surface p-5 shadow-soft md:p-8"
     >
-      {/* Skills */}
       <section>
         <h2 className="mb-6 flex items-center justify-center gap-2 text-xl font-bold text-white md:text-2xl">
           <span className="text-gold">&lt;</span>
@@ -41,7 +40,6 @@ export function MainContent() {
         </div>
       </section>
 
-      {/* Experience */}
       <section className="mt-10">
         <h2 className="mb-6 flex items-center justify-center gap-2 text-xl font-bold text-white md:text-2xl">
           <span className="text-gold">&lt;</span>
@@ -79,7 +77,6 @@ export function MainContent() {
         </div>
       </section>
 
-      {/* Services */}
       <section className="mt-10">
         <h2 className="mb-6 flex items-center justify-center gap-2 text-xl font-bold text-white md:text-2xl">
           <span className="text-gold">&lt;</span>
@@ -93,7 +90,6 @@ export function MainContent() {
         </div>
       </section>
 
-      {/* Featured projects */}
       <section className="mt-10">
         <h2 className="mb-6 flex items-center justify-center gap-2 text-xl font-bold text-white md:text-2xl">
           <span className="text-gold">&lt;</span>
@@ -120,7 +116,7 @@ export function MainContent() {
                     className="shrink-0 text-gold/70 transition hover:text-gold"
                     aria-label={`Open ${project.title}`}
                   >
-                    <ExternalLink size={16} />
+                    <FaExternalLinkAlt size={14} />
                   </a>
                 )}
               </div>
@@ -140,7 +136,6 @@ export function MainContent() {
         </div>
       </section>
 
-      {/* Live project links */}
       <section className="mt-10">
         <h2 className="mb-4 flex items-center justify-center gap-2 text-lg font-bold text-white">
           <span className="text-gold">&lt;</span>
@@ -162,7 +157,6 @@ export function MainContent() {
         </div>
       </section>
 
-      {/* Soft skills */}
       <section className="mt-10">
         <h2 className="mb-6 flex items-center justify-center gap-2 text-xl font-bold text-white md:text-2xl">
           <span className="text-gold">&lt;</span>
