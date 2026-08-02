@@ -7,12 +7,13 @@ import { ServiceCard } from "./ServiceCard";
 import { ProjectCarousel } from "./ProjectCarousel";
 
 export function MainContent() {
-  const { t } = useLanguage();
+  const { t, locale } = useLanguage();
 
-  // Split technical skills into two columns
   const mid = Math.ceil(t.skills.technical.length / 2);
   const leftSkills = t.skills.technical.slice(0, mid);
   const rightSkills = t.skills.technical.slice(mid);
+
+  const softTitle = locale === "fa" ? "مهارت‌های نرم" : "Personal Skills";
 
   return (
     <motion.article
@@ -63,7 +64,7 @@ export function MainContent() {
       <section className="mt-10">
         <h2 className="mb-6 flex items-center justify-center gap-2 text-xl font-bold text-white md:text-2xl">
           <span className="text-gold">&lt;</span>
-          Personal Skills
+          {softTitle}
           <span className="text-gold">/&gt;</span>
         </h2>
         <div className="grid gap-x-8 sm:grid-cols-2">
