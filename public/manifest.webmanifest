@@ -1,0 +1,24 @@
+{
+  "name": "Arman Danesh — Portfolio",
+  "short_name": "Arman Danesh",
+  "description": "Front-End Developer portfolio — React, Next.js, TypeScript",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#0B0B0D",
+  "theme_color": "#DBA507",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ]
+}

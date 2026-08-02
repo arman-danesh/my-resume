@@ -1,14 +1,15 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Code2, Palette, PenTool, Search } from "lucide-react";
+import { FaCode, FaPalette, FaPenNib, FaSearch } from "react-icons/fa6";
 import type { Service } from "@/lib/types";
+import type { IconType } from "react-icons";
 
-const icons = {
-  code: Code2,
-  palette: Palette,
-  pen: PenTool,
-  search: Search,
+const icons: Record<Service["icon"], IconType> = {
+  code: FaCode,
+  palette: FaPalette,
+  pen: FaPenNib,
+  search: FaSearch,
 };
 
 interface ServiceCardProps {
@@ -29,7 +30,7 @@ export function ServiceCard({ service, index }: ServiceCardProps) {
       className="group flex flex-1 flex-col rounded-2xl border border-white/5 bg-surface p-5 shadow-soft transition-shadow hover:shadow-gold"
     >
       <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gold/10 text-gold transition-colors group-hover:bg-gold/20">
-        <Icon size={24} strokeWidth={1.75} />
+        <Icon size={22} />
       </div>
       <h3 className="mb-2 text-base font-bold text-white">{service.title}</h3>
       <p className="text-sm leading-relaxed text-white/65">{service.description}</p>
