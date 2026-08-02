@@ -1,0 +1,170 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { Github, Linkedin, Send, Mail, Phone } from "lucide-react";
+import { useLanguage } from "@/lib/LanguageContext";
+import { CircularProgress } from "./CircularProgress";
+
+export function Sidebar() {
+  const { t, isRTL, toggleLanguage } = useLanguage();
+
+  return (
+    <motion.aside
+      initial={{ opacity: 0, x: isRTL ? 40 : -40 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.6, delay: 0.3 }}
+      className="sticky top-4 flex h-fit w-full flex-col overflow-hidden rounded-2xl border border-white/5 bg-surface shadow-soft lg:w-[320px] lg:shrink-0"
+    >
+      {/* Header */}
+      <div className="relative border-b border-white/5 bg-gradient-to-b from-gold/10 to-transparent p-6 text-center">
+        <button
+          onClick={toggleLanguage}
+          className="absolute left-4 top-4 rounded-lg bg-gold px-2.5 py-1 text-xs font-bold text-surface-dark transition hover:bg-gold-light"
+          aria-label="Switch language"
+        >
+          {t.languageButton}
+        </button>
+
+        <a
+          href="/images/image/profile-image.jpg"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mx-auto mb-4 block h-20 w-20 overflow-hidden rounded-full ring-2 ring-gold/60 ring-offset-2 ring-offset-surface-dark"
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/image/profile-image.jpg"
+            alt={t.name}
+            className="h-full w-full object-cover"
+          />
+        </a>
+
+        <h1 className="font-display text-xl font-bold tracking-wide text-white">
+          {t.name}
+        </h1>
+        <div className="mt-1.5 flex flex-wrap items-center justify-center gap-x-2 gap-y-0.5 text-sm text-gold">
+          {t.roles.map((role) => (
+            <span key={role}>{role}</span>
+          ))}
+        </div>
+      </div>
+
+      <div className="flex flex-1 flex-col gap-5 p-5">
+        {/* About */}
+        <section>
+          <h2 className="mb-2 text-sm font-bold uppercase tracking-wider text-gold">
+            {t.about.title}
+          </h2>
+          <p className="text-sm leading-relaxed text-white/70">{t.about.description}</p>
+        </section>
+
+        <hr className="border-white/5" />
+
+        {/* Information */}
+        <section>
+          <h2 className="mb-3 text-sm font-bold uppercase tracking-wider text-gold">
+            {t.information.title}
+          </h2>
+          <dl className="space-y-2.5">
+            {t.information.items.map((item) => (
+              <div key={item.label} className="flex items-start justify-between gap-3 text-sm">
+                <dt className="shrink-0 text-white/50">{item.label}</dt>
+                <dd className="text-right text-white/90">{item.value}</dd>
+              </div>
+            ))}
+          </dl>
+        </section>
+
+        <hr className="border-white/5" />
+
+        {/* Learning */}
+        <section>
+          <h2 className="mb-4 text-sm font-bold uppercase tracking-wider text-gold">
+            {t.learning.title}
+          </h2>
+          <div className="flex justify-around">
+            {t.learning.items.map((item, i) => (
+              <CircularProgress
+                key={item.label}
+                label={item.label}
+                level={item.level}
+                delay={0.4 + i * 0.15}
+              />
+            ))}
+          </div>
+        </section>
+
+        <hr className="border-white/5" />
+
+        {/* Contact */}
+        <section>
+          <h2 className="mb-3 text-sm font-bold uppercase tracking-wider text-gold">
+            {t.contact.title}
+          </h2>
+          <ul className="space-y-2.5 text-sm">
+            <li>
+              <a
+                href={`tel:+98${t.contact.phone.replace(/[^0-9]/g, "").slice(-10)}`}
+                className="flex items-center gap-2.5 text-white/80 transition hover:text-gold"
+              >
+                <Phone size={15} className="text-gold" />
+                {t.contact.phone}
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://t.me/ArmanDaneshWork"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2.5 text-white/80 transition hover:text-gold"
+              >
+                <Send size={15} className="text-gold" />
+                {t.contact.telegram}
+              </a>
+            </li>
+            <li>
+              <a
+                href="mailto:ArmanDaneshWork@gmail.com"
+                className="flex items-center gap-2.5 text-white/80 transition hover:text-gold"
+              >
+                <Mail size={15} className="text-gold" />
+                {t.contact.email}
+              </a>
+            </li>
+          </ul>
+        </section>
+      </div>
+
+      {/* Social footer */}
+      <div className="flex items-center justify-center gap-4 border-t border-white/5 py-4">
+        <a
+          href="https://www.linkedin.com/in/arman-danesh-a6aaab2bb/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="LinkedIn"
+          className="text-white/50 transition hover:text-gold"
+        >
+          <Linkedin size={20} />
+        </a>
+        <a
+          href="https://t.me/ArmanDaneshWork"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Telegram"
+          className="text-white/50 transition hover:text-gold"
+        >
+          <Send size={20} />
+        </a>
+        <a
+          href="https://github.com/arman-danesh"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="GitHub"
+          className="text-white/50 transition hover:text-gold"
+        >
+          <Github size={20} />
+        </a>
+      </div>
+    </motion.aside>
+  );
+}
