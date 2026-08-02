@@ -18,37 +18,44 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Arman Danesh — UI/UX Designer & Front-End Developer",
+  title: "Arman Danesh — Front-End Developer",
   description:
-    "Professional UI/UX Designer and Front-End Developer specializing in beautiful, responsive web applications. Based in Tehran, Iran.",
+    "Frontend Developer with 3+ years of experience building scalable web apps with React, Vue, Next.js and TypeScript. Based in Tehran, Iran.",
   keywords: [
-    "UI/UX Designer",
     "Front-End Developer",
     "Next.js",
     "React",
+    "Vue",
     "TypeScript",
     "Tehran",
     "Arman Danesh",
   ],
   authors: [{ name: "Arman Danesh" }],
+  manifest: "/manifest.webmanifest",
   openGraph: {
     type: "website",
     url: "https://arman-danesh.github.io/my-resume/",
-    title: "Arman Danesh — UI/UX Designer & Front-End Developer",
+    title: "Arman Danesh — Front-End Developer",
     description:
-      "Professional UI/UX Designer and Front-End Developer with expertise in creating beautiful, responsive web applications.",
-    images: ["/images/image/profile-image.jpg"],
+      "Frontend Developer with 3+ years of experience building scalable, responsive web applications.",
+    images: ["/logo.svg"],
   },
   twitter: {
-    card: "summary_large_image",
-    title: "Arman Danesh — UI/UX Designer & Front-End Developer",
+    card: "summary",
+    title: "Arman Danesh — Front-End Developer",
     description:
-      "Professional UI/UX Designer and Front-End Developer with expertise in creating beautiful, responsive web applications.",
-    images: ["/images/image/profile-image.jpg"],
+      "Frontend Developer with 3+ years of experience building scalable, responsive web applications.",
+    images: ["/logo.svg"],
   },
   icons: {
-    icon: "/images/icons/favicon-32x32.png",
-    apple: "/images/icons/apple-touch-icon.png",
+    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
+    apple: [{ url: "/logo.svg", type: "image/svg+xml" }],
+    shortcut: "/favicon.svg",
+  },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "Arman Danesh",
   },
 };
 
