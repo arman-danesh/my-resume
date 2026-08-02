@@ -14,11 +14,24 @@ export interface Service {
 export interface Project {
   title: string;
   description: string;
-  image: string;
-  thumbnail: string;
+  image?: string;
+  thumbnail?: string;
   technologies: string[];
   liveUrl?: string;
   githubUrl?: string;
+}
+
+export interface ExperienceItem {
+  company: string;
+  role: string;
+  period: string;
+  location?: string;
+  bullets: string[];
+}
+
+export interface LiveProject {
+  name: string;
+  url: string;
 }
 
 export interface Translations {
@@ -33,6 +46,11 @@ export interface Translations {
     title: string;
     items: { label: string; value: string }[];
   };
+  education: {
+    title: string;
+    degree: string;
+    university: string;
+  };
   learning: {
     title: string;
     items: { label: string; level: number }[];
@@ -45,8 +63,13 @@ export interface Translations {
   };
   skills: {
     title: string;
+    softTitle: string;
     technical: Skill[];
     soft: Skill[];
+  };
+  experience: {
+    title: string;
+    items: ExperienceItem[];
   };
   services: {
     title: string;
@@ -55,6 +78,10 @@ export interface Translations {
   projects: {
     title: string;
     items: Project[];
+  };
+  liveProjects: {
+    title: string;
+    items: LiveProject[];
   };
   footer: string;
   welcome: string;
