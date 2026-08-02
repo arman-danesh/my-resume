@@ -1,25 +1,25 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Github, Linkedin, Send, Mail, Phone } from "lucide-react";
+import { Github, Linkedin, Send, Mail, Phone, GraduationCap } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
 import { CircularProgress } from "./CircularProgress";
 
 export function Sidebar() {
-  const { t, isRTL, toggleLanguage } = useLanguage();
+  const { t, isRTL, toggleLanguage, isSwitching } = useLanguage();
 
   return (
     <motion.aside
       initial={{ opacity: 0, x: isRTL ? 40 : -40 }}
       animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.6, delay: 0.3 }}
+      transition={{ duration: 0.55, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
       className="sticky top-4 flex h-fit w-full flex-col overflow-hidden rounded-2xl border border-white/5 bg-surface shadow-soft lg:w-[320px] lg:shrink-0"
     >
-      {/* Header */}
       <div className="relative border-b border-white/5 bg-gradient-to-b from-gold/10 to-transparent p-6 text-center">
         <button
           onClick={toggleLanguage}
-          className="absolute left-4 top-4 rounded-lg bg-gold px-2.5 py-1 text-xs font-bold text-surface-dark transition hover:bg-gold-light"
+          disabled={isSwitching}
+          className="absolute left-4 top-4 rounded-lg bg-gold px-2.5 py-1 text-xs font-bold text-surface-dark transition hover:bg-gold-light disabled:opacity-60"
           aria-label="Switch language"
         >
           {t.languageButton}
@@ -50,7 +50,6 @@ export function Sidebar() {
       </div>
 
       <div className="flex flex-1 flex-col gap-5 p-5">
-        {/* About */}
         <section>
           <h2 className="mb-2 text-sm font-bold uppercase tracking-wider text-gold">
             {t.about.title}
@@ -60,7 +59,6 @@ export function Sidebar() {
 
         <hr className="border-white/5" />
 
-        {/* Information */}
         <section>
           <h2 className="mb-3 text-sm font-bold uppercase tracking-wider text-gold">
             {t.information.title}
@@ -69,7 +67,7 @@ export function Sidebar() {
             {t.information.items.map((item) => (
               <div key={item.label} className="flex items-start justify-between gap-3 text-sm">
                 <dt className="shrink-0 text-white/50">{item.label}</dt>
-                <dd className="text-right text-white/90">{item.value}</dd>
+                <dd className="text-end text-white/90 break-all">{item.value}</dd>
               </div>
             ))}
           </dl>
@@ -77,7 +75,17 @@ export function Sidebar() {
 
         <hr className="border-white/5" />
 
-        {/* Learning */}
+        <section>
+          <h2 className="mb-3 flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-gold">
+            <GraduationCap size={14} />
+            {t.education.title}
+          </h2>
+          <p className="text-sm font-medium text-white/90">{t.education.degree}</p>
+          <p className="mt-0.5 text-xs text-white/55">{t.education.university}</p>
+        </section>
+
+        <hr className="border-white/5" />
+
         <section>
           <h2 className="mb-4 text-sm font-bold uppercase tracking-wider text-gold">
             {t.learning.title}
@@ -88,7 +96,7 @@ export function Sidebar() {
                 key={item.label}
                 label={item.label}
                 level={item.level}
-                delay={0.4 + i * 0.15}
+                delay={0.35 + i * 0.12}
               />
             ))}
           </div>
@@ -96,7 +104,6 @@ export function Sidebar() {
 
         <hr className="border-white/5" />
 
-        {/* Contact */}
         <section>
           <h2 className="mb-3 text-sm font-bold uppercase tracking-wider text-gold">
             {t.contact.title}
@@ -104,10 +111,10 @@ export function Sidebar() {
           <ul className="space-y-2.5 text-sm">
             <li>
               <a
-                href={`tel:+98${t.contact.phone.replace(/[^0-9]/g, "").slice(-10)}`}
+                href="tel:+989911537923"
                 className="flex items-center gap-2.5 text-white/80 transition hover:text-gold"
               >
-                <Phone size={15} className="text-gold" />
+                <Phone size={15} className="shrink-0 text-gold" />
                 {t.contact.phone}
               </a>
             </li>
@@ -118,16 +125,16 @@ export function Sidebar() {
                 rel="noopener noreferrer"
                 className="flex items-center gap-2.5 text-white/80 transition hover:text-gold"
               >
-                <Send size={15} className="text-gold" />
+                <Send size={15} className="shrink-0 text-gold" />
                 {t.contact.telegram}
               </a>
             </li>
             <li>
               <a
-                href="mailto:ArmanDaneshWork@gmail.com"
+                href="mailto:armandaneshwork@gmail.com"
                 className="flex items-center gap-2.5 text-white/80 transition hover:text-gold"
               >
-                <Mail size={15} className="text-gold" />
+                <Mail size={15} className="shrink-0 text-gold" />
                 {t.contact.email}
               </a>
             </li>
@@ -135,7 +142,6 @@ export function Sidebar() {
         </section>
       </div>
 
-      {/* Social footer */}
       <div className="flex items-center justify-center gap-4 border-t border-white/5 py-4">
         <a
           href="https://www.linkedin.com/in/arman-danesh-a6aaab2bb/"
