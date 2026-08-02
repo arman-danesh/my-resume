@@ -1,120 +1,84 @@
-# Arman Danesh - Portfolio Website
+# Arman Danesh — Portfolio (Next.js)
 
-<div align="center">
-  <img src="images/image/resume picture.jpg" alt="Arman Danesh" width="200" style="border-radius: 50%;">
-  
-  [![Portfolio](https://img.shields.io/badge/Portfolio-Live-green)](https://arman-danesh.github.io/my-resume/)
-  [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue)](https://linkedin.com/in/arman-danesh)
-  [![GitHub](https://img.shields.io/badge/GitHub-Follow-black)](https://github.com/arman-danesh)
+Modern, animated personal portfolio rebuilt with **Next.js 15**, **TypeScript**, **Tailwind CSS** and **Framer Motion**.
 
-  A modern, responsive portfolio website showcasing my work as a UI/UX Designer and Front-End Developer.
-</div>
+[![Live](https://img.shields.io/badge/Live-Demo-green)](https://arman-danesh.github.io/my-resume/)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue)](https://www.linkedin.com/in/arman-danesh-a6aaab2bb/)
+[![GitHub](https://img.shields.io/badge/GitHub-Follow-black)](https://github.com/arman-danesh)
 
-## 🌟 Features
+## ✨ Features
 
-- 🎨 Modern and clean design
-- 📱 Fully responsive layout
-- ⚡ Progressive Web App (PWA) support
-- 🌐 Multi-language support
-- 🎯 Interactive UI elements
-- 📊 Skills visualization
-- 🖼️ Project showcase with lightbox
-- 🔍 SEO optimized
+- Next.js 15 App Router + static export (GitHub Pages ready)
+- Full EN / FA bilingual support with RTL
+- Smooth Framer Motion animations & welcome intro
+- Animated skill bars & circular progress indicators
+- Project carousel with lightbox
+- Responsive dark theme with gold accent (`#DBA507`)
+- Clean component architecture & TypeScript throughout
 
-## 🛠️ Technologies Used
+## 🛠 Tech Stack
 
-- HTML5
-- CSS3 (SASS)
-- JavaScript (TypeScript)
-- Bootstrap 5
-- Splide.js
-- Lightbox2
+| Layer        | Technology              |
+|--------------|-------------------------|
+| Framework    | Next.js 15              |
+| Language     | TypeScript              |
+| Styling      | Tailwind CSS            |
+| Animation    | Framer Motion           |
+| Icons        | Lucide React            |
+| Fonts        | Poppins + Playfair Display |
 
 ## 🚀 Getting Started
 
-### Prerequisites
-
-- Node.js (v14 or higher)
-- npm or yarn
-
-### Installation
-
-1. Clone the repository
 ```bash
+# Clone
 git clone https://github.com/arman-danesh/my-resume.git
-```
-
-2. Navigate to the project directory
-```bash
 cd my-resume
-```
+git checkout dev
 
-3. Install dependencies
-```bash
+# Install
 npm install
-```
 
-4. use build command to build typeScript & Sass
-```bash
+# Develop
+npm run dev
+
+# Production build (static export → out/)
 npm run build
 ```
 
-## 📁 Project Structure
+Open [http://localhost:3000](http://localhost:3000).
+
+> **Note:** Keep the existing `images/` folder at the project root (or move it under `public/images/`). The app references `/images/...`.
+
+## 📁 Structure
 
 ```
-my-resume/
-├── css/
-│   └── style.css
-├── js/
-│   └── app.js
-├── images/
-│   ├── image/
-│   └── icons/
-├── source/
-│   ├── sass/
-│   │   ├── style.scss
-│   │   ├── _global.scss
-│   │   └── _variables.scss
-│   └── ts/
-│       └── app.ts
-├── index.html
-├── manifest.json
-├── sw.js
-└── package.json
+├── app/
+│   ├── layout.tsx          # Root layout + fonts + metadata
+│   ├── page.tsx            # Home page
+│   └── globals.css
+├── components/
+│   ├── Sidebar.tsx
+│   ├── MainContent.tsx
+│   ├── SkillBar.tsx
+│   ├── CircularProgress.tsx
+│   ├── ServiceCard.tsx
+│   ├── ProjectCarousel.tsx
+│   └── WelcomeAnimation.tsx
+├── lib/
+│   ├── data.ts             # All EN/FA content
+│   ├── types.ts
+│   └── LanguageContext.tsx
+├── images/                 # Existing assets (keep this)
+├── next.config.ts          # output: "export"
+└── tailwind.config.ts
 ```
 
-## 🌐 Live Demo
+## 🌐 Deploy (GitHub Pages)
 
-Visit [https://arman-danesh.github.io/my-resume/](https://arman-danesh.github.io/my-resume/) to see the live version of this portfolio.
+Because `output: "export"` is enabled, `npm run build` produces a static `out/` folder.
 
-## 📱 PWA Features
-
-- Offline functionality
-- Installable on devices
-- App-like experience
-- Push notifications support
-
-## 🔧 Development
-
-### Building the Project
-
-```bash
-npm run build
-```
-
+You can deploy the contents of `out/` to the `gh-pages` branch or use GitHub Actions.
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🤝 Contact
-
-- Email: ArmanDaneshWork@gmail.com
-- LinkedIn: [Arman Danesh](https://linkedin.com/in/arman-danesh)
-- GitHub: [arman-danesh](https://github.com/arman-danesh)
-
----
-
-<div align="center">
-  Made with ❤️ by Arman Danesh
-</div> 
+MIT © Arman Danesh
