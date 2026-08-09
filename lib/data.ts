@@ -1,6 +1,17 @@
+/**
+ * Portfolio content (EN + FA)
+ * --------------------------
+ * Single source of truth for all UI copy.
+ * Edit this file to update about text, jobs, skills, projects, etc.
+ * Shape is defined by `Translations` in `lib/types.ts`.
+ */
+
 import type { Translations, Locale } from "./types";
 
 export const translations: Record<Locale, Translations> = {
+  // =========================================================================
+  // English
+  // =========================================================================
   en: {
     languageButton: "FA",
     name: "ARMAN DANESH",
@@ -207,6 +218,10 @@ export const translations: Record<Locale, Translations> = {
     footer: "© 2026 Arman Danesh. All rights reserved.",
     welcome: "Welcome to my portfolio",
   },
+
+  // =========================================================================
+  // Persian (RTL)
+  // =========================================================================
   fa: {
     languageButton: "EN",
     name: "آرمان دانش",
