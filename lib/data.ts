@@ -7,6 +7,11 @@
  */
 
 import type { Translations, Locale } from "./types";
+const portfolioStartYear = 2023;
+const portfolioStartYearFa = 1402;
+
+const currentYear = new Date().getFullYear();
+const currentYearFa = currentYear - 621;
 
 export const translations: Record<Locale, Translations> = {
   // =========================================================================
@@ -215,7 +220,7 @@ export const translations: Record<Locale, Translations> = {
         { name: "This Portfolio", url: "https://arman-danesh.github.io/my-resume" },
       ],
     },
-    footer: "© 2026 Arman Danesh. All rights reserved.",
+    footer: `© ${portfolioStartYear}–${currentYear} Arman Danesh. All rights reserved.`,
     welcome: "Welcome to my portfolio",
   },
 
@@ -425,7 +430,7 @@ export const translations: Record<Locale, Translations> = {
         { name: "این پورتفولیو", url: "https://arman-danesh.github.io/my-resume" },
       ],
     },
-    footer: "۱۴۰۵© آرمان دانش. تمامی حقوق محفوظ است.",
+    footer: `${portfolioStartYearFa}–${currentYearFa}© آرمان دانش. تمامی حقوق محفوظ است.`,
     welcome: "به پورتفولیوی من خوش آمدید",
   },
 };
