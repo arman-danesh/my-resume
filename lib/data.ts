@@ -17,6 +17,7 @@ export const translations: Record<Locale, Translations> = {
   // =========================================================================
   // English
   // =========================================================================
+
   en: {
     languageButton: "FA",
     name: "ARMAN DANESH",
