@@ -14,6 +14,7 @@ const currentYear = new Date().getFullYear();
 const currentYearFa = currentYear - 621;
 
 export const translations: Record<Locale, Translations> = {
+
   // =========================================================================
   // English
   // =========================================================================
