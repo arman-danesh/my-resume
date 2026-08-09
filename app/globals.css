@@ -9,6 +9,7 @@
 @tailwind utilities;
 
 /* Design tokens (also mirrored in tailwind.config.ts) */
+
 :root {
   --gold: #dba507;
   --surface: rgba(33, 33, 40, 0.75);
