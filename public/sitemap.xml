@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://arman-danesh.github.io/my-resume/</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arman-danesh.github.io/my-resume/" />
+    <xhtml:link rel="alternate" hreflang="fa" href="https://arman-danesh.github.io/my-resume/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arman-danesh.github.io/my-resume/" />
+  </url>
+</urlset>

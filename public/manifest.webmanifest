@@ -1,12 +1,16 @@
 {
-  "name": "Arman Danesh — Portfolio",
+  "name": "Arman Danesh — Front-End Developer",
   "short_name": "Arman Danesh",
-  "description": "Front-End Developer portfolio — React, Next.js, TypeScript",
+  "description": "Front-End Developer portfolio — React, Next.js, TypeScript. Based in Tehran, Iran.",
   "start_url": "./",
+  "scope": "./",
   "display": "standalone",
   "background_color": "#0B0B0D",
   "theme_color": "#DBA507",
   "orientation": "portrait-primary",
+  "lang": "en",
+  "dir": "ltr",
+  "categories": ["business", "productivity", "utilities"],
   "icons": [
     {
       "src": "/logo.svg",

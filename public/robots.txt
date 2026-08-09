@@ -1,0 +1,6 @@
+# https://arman-danesh.github.io/my-resume/
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://arman-danesh.github.io/my-resume/sitemap.xml
