@@ -1,3 +1,9 @@
+/**
+ * Tailwind config
+ * ---------------
+ * Extends theme with portfolio colors, fonts, shadows, and keyframes.
+ */
+
 import type { Config } from "tailwindcss";
 
 const config: Config = {
@@ -8,6 +14,7 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      // Brand palette
       colors: {
         gold: {
           DEFAULT: "#DBA507",
@@ -20,6 +27,7 @@ const config: Config = {
           dark: "#0B0B0D",
         },
       },
+      // Wired to next/font CSS variables in layout.tsx
       fontFamily: {
         sans: ["var(--font-poppins)", "system-ui", "sans-serif"],
         display: ["var(--font-playfair)", "serif"],

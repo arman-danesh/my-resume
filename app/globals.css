@@ -1,7 +1,14 @@
+/**
+ * Global styles
+ * -------------
+ * Tailwind layers + design tokens, scrollbar, selection.
+ */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Design tokens (also mirrored in tailwind.config.ts) */
 :root {
   --gold: #dba507;
   --surface: rgba(33, 33, 40, 0.75);
@@ -20,7 +27,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Custom scrollbar */
+/* Custom scrollbar (WebKit) */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -39,7 +46,7 @@ body {
   background: #dba507aa;
 }
 
-/* Selection */
+/* Text selection */
 ::selection {
   background: rgba(219, 165, 7, 0.35);
   color: white;

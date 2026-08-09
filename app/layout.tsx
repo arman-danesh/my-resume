@@ -1,8 +1,17 @@
+/**
+ * Root layout
+ * -----------
+ * - Google fonts (Poppins + Playfair Display)
+ * - SEO / Open Graph / Twitter / PWA metadata
+ * - LanguageProvider wraps the entire app
+ */
+
 import type { Metadata, Viewport } from "next";
 import { Poppins, Playfair_Display } from "next/font/google";
 import { LanguageProvider } from "@/lib/LanguageContext";
 import "./globals.css";
 
+// Body text
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
@@ -10,6 +19,7 @@ const poppins = Poppins({
   display: "swap",
 });
 
+// Display headings (name in sidebar)
 const playfair = Playfair_Display({
   subsets: ["latin"],
   weight: ["700"],
@@ -73,7 +83,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${poppins.variable} ${playfair.variable} font-sans antialiased`}>
+      <body
+        className={`${poppins.variable} ${playfair.variable} font-sans antialiased`}
+      >
         <LanguageProvider>{children}</LanguageProvider>
       </body>
     </html>
