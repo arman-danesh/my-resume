@@ -16,7 +16,6 @@ export const translations: Record<Locale, Translations> = {
         { label: "Location", value: "Tehran, Iran" },
         { label: "Languages", value: "English, Persian" },
         { label: "Email", value: "armandaneshwork@gmail.com" },
-        { label: "Phone", value: "+98 991 153 7923" },
       ],
     },
     education: {
@@ -27,7 +26,7 @@ export const translations: Record<Locale, Translations> = {
     learning: {
       title: "Focus Areas",
       items: [
-        { label: "Next.js", level: 90 },
+        { label: "Mongo", level: 90 },
         { label: "TypeScript", level: 90 },
         { label: "Nest.js", level: 70 },
       ],
@@ -223,7 +222,6 @@ export const translations: Record<Locale, Translations> = {
         { label: "محل سکونت", value: "تهران، ایران" },
         { label: "زبان‌ها", value: "انگلیسی، فارسی" },
         { label: "ایمیل", value: "armandaneshwork@gmail.com" },
-        { label: "تلفن", value: "+۹۸ ۹۹۱ ۱۵۳ ۷۹۲۳" },
       ],
     },
     education: {
@@ -234,7 +232,7 @@ export const translations: Record<Locale, Translations> = {
     learning: {
       title: "حوزه‌های تمرکز",
       items: [
-        { label: "Next.js", level: 90 },
+        { label: "Mongo", level: 90 },
         { label: "TypeScript", level: 90 },
         { label: "Nest.js", level: 70 },
       ],

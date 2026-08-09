@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { FaCode, FaPalette, FaPenNib, FaSearch } from "react-icons/fa6";
+import { FaCode, FaPalette, FaPenNib ,FaSearchengin} from "react-icons/fa6";
 import type { Service } from "@/lib/types";
 import type { IconType } from "react-icons";
 
@@ -9,7 +9,7 @@ const icons: Record<Service["icon"], IconType> = {
   code: FaCode,
   palette: FaPalette,
   pen: FaPenNib,
-  search: FaSearch,
+  search: FaSearchengin,
 };
 
 interface ServiceCardProps {

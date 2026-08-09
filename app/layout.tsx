@@ -18,7 +18,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Arman Danesh — Front-End Developer",
+  title: "arman danesh — Front-End Developer",
   description:
     "Frontend Developer with 3+ years of experience building scalable web apps with React, Vue, Next.js and TypeScript. Based in Tehran, Iran.",
   keywords: [
@@ -29,20 +29,21 @@ export const metadata: Metadata = {
     "TypeScript",
     "Tehran",
     "Arman Danesh",
+    "arman danesh",
   ],
   authors: [{ name: "Arman Danesh" }],
   manifest: "/manifest.webmanifest",
   openGraph: {
     type: "website",
     url: "https://arman-danesh.github.io/my-resume/",
-    title: "Arman Danesh — Front-End Developer",
+    title: "arman danesh — Front-End Developer",
     description:
       "Frontend Developer with 3+ years of experience building scalable, responsive web applications.",
     images: ["/logo.svg"],
   },
   twitter: {
     card: "summary",
-    title: "Arman Danesh — Front-End Developer",
+    title: "arman danesh — Front-End Developer",
     description:
       "Frontend Developer with 3+ years of experience building scalable, responsive web applications.",
     images: ["/logo.svg"],
@@ -55,7 +56,7 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
-    title: "Arman Danesh",
+    title: "arman danesh",
   },
 };
 
@@ -72,9 +73,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${poppins.variable} ${playfair.variable} font-sans antialiased`}
-      >
+      <body className={`${poppins.variable} ${playfair.variable} font-sans antialiased`}>
         <LanguageProvider>{children}</LanguageProvider>
       </body>
     </html>

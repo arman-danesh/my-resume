@@ -11,34 +11,20 @@ import {
 } from "react-icons/fa6";
 import { useLanguage } from "@/lib/LanguageContext";
 import { CircularProgress } from "./CircularProgress";
+import Image from "next/image";
 
 export function Sidebar() {
   const { t, isRTL, toggleLanguage, isSwitching } = useLanguage();
 
   return (
-    <motion.aside
-      initial={{ opacity: 0, x: isRTL ? 40 : -40 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.55, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
-      className="sticky top-4 flex h-fit w-full flex-col overflow-hidden rounded-2xl border border-white/5 bg-surface shadow-soft lg:w-[320px] lg:shrink-0"
-    >
+    <motion.aside initial={{ opacity: 0, x: isRTL ? 40 : -40 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.55, delay: 0.25, ease: [0.22, 1, 0.36, 1] }} className="relative md:sticky top-4 flex h-fit w-full flex-col overflow-hidden rounded-2xl border border-white/5 bg-surface shadow-soft lg:w-[320px] lg:shrink-0">
       <div className="relative border-b border-white/5 bg-gradient-to-b from-gold/10 to-transparent p-6 text-center">
-        <button
-          onClick={toggleLanguage}
-          disabled={isSwitching}
-          className="absolute left-4 top-4 rounded-lg bg-gold px-2.5 py-1 text-xs font-bold text-surface-dark transition hover:bg-gold-light disabled:opacity-60"
-          aria-label="Switch language"
-        >
+        <button onClick={toggleLanguage} disabled={isSwitching} className="absolute left-4 top-4 rounded-lg bg-gold px-2.5 py-1 text-xs font-bold text-surface-dark transition hover:bg-gold-light disabled:opacity-60" aria-label="Switch language">
           {t.languageButton}
         </button>
 
         <div className="mx-auto mb-3 flex h-20 w-20 items-center justify-center overflow-hidden rounded-full ring-2 ring-gold/60 ring-offset-2 ring-offset-surface-dark">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/logo.svg"
-            alt="Arman Danesh logo"
-            className="h-full w-full object-cover"
-          />
+          <Image src="/profile-image.jpg" alt="arman danesh logo" width={20} height={20} className="h-full w-full object-cover"/>
         </div>
 
         <h1 className="font-display text-xl font-bold tracking-wide text-white">
@@ -94,12 +80,7 @@ export function Sidebar() {
           </h2>
           <div className="flex justify-around">
             {t.learning.items.map((item, i) => (
-              <CircularProgress
-                key={item.label}
-                label={item.label}
-                level={item.level}
-                delay={0.35 + i * 0.12}
-              />
+              <CircularProgress key={item.label} label={item.label} level={item.level} delay={0.35 + i * 0.12}/>
             ))}
           </div>
         </section>
@@ -112,30 +93,19 @@ export function Sidebar() {
           </h2>
           <ul className="space-y-2.5 text-sm">
             <li>
-              <a
-                href="tel:+989911537923"
-                className="flex items-center gap-2.5 text-white/80 transition hover:text-gold"
-              >
+              <a href="tel:+989911537923" className="flex items-center gap-2.5 text-white/80 transition hover:text-gold">
                 <FaPhone size={14} className="shrink-0 text-gold" />
                 {t.contact.phone}
               </a>
             </li>
             <li>
-              <a
-                href="https://t.me/ArmanDaneshWork"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2.5 text-white/80 transition hover:text-gold"
-              >
+              <a href="https://t.me/ArmanDaneshWork" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2.5 text-white/80 transition hover:text-gold">
                 <FaTelegram size={15} className="shrink-0 text-gold" />
                 {t.contact.telegram}
               </a>
             </li>
             <li>
-              <a
-                href="mailto:armandaneshwork@gmail.com"
-                className="flex items-center gap-2.5 text-white/80 transition hover:text-gold"
-              >
+              <a href="mailto:armandaneshwork@gmail.com" className="flex items-center gap-2.5 text-white/80 transition hover:text-gold">
                 <FaEnvelope size={14} className="shrink-0 text-gold" />
                 {t.contact.email}
               </a>
