@@ -1,5 +1,12 @@
 "use client";
 
+/**
+ * WelcomeAnimation
+ * ----------------
+ * Full-screen intro overlay shown once on first load (~2.2s).
+ * Layers slide up and logo/title fade out, then the main page is revealed.
+ */
+
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useLanguage } from "@/lib/LanguageContext";
@@ -8,6 +15,7 @@ export function WelcomeAnimation() {
   const { t } = useLanguage();
   const [show, setShow] = useState(true);
 
+  // Auto-dismiss after 2.2s
   useEffect(() => {
     const timer = setTimeout(() => setShow(false), 2200);
     return () => clearTimeout(timer);
@@ -22,6 +30,7 @@ export function WelcomeAnimation() {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.6 }}
         >
+          {/* Background panels (slide up on exit) */}
           <motion.div
             className="absolute inset-0 bg-[#0B0B0D]"
             exit={{ y: "-100%" }}
@@ -32,6 +41,8 @@ export function WelcomeAnimation() {
             exit={{ y: "-100%" }}
             transition={{ duration: 0.9, delay: 0.15, ease: [0.76, 0, 0.24, 1] }}
           />
+
+          {/* Brand logo */}
           <motion.img
             src="/logo.svg"
             alt=""
@@ -41,6 +52,8 @@ export function WelcomeAnimation() {
             exit={{ opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.45 }}
           />
+
+          {/* Welcome title (localized) */}
           <motion.h1
             className="relative z-10 text-center text-2xl font-bold tracking-wide text-white md:text-4xl"
             initial={{ opacity: 0, y: 16 }}

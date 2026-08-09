@@ -1,21 +1,35 @@
 "use client";
 
+/**
+ * SkillBar
+ * --------
+ * Horizontal progress bar for a single skill.
+ * Animates width from 0 → level% when scrolled into view (once).
+ */
+
 import { motion } from "framer-motion";
 
 interface SkillBarProps {
+  /** Skill label (e.g. "React.js") */
   name: string;
+  /** Proficiency 0–100 */
   level: number;
+  /** Stagger delay in seconds */
   delay?: number;
 }
 
 export function SkillBar({ name, level, delay = 0 }: SkillBarProps) {
   return (
     <div className="mb-3">
+      {/* Label + percentage */}
       <div className="mb-1.5 flex items-center justify-between text-sm">
         <span className="font-medium text-white/90">{name}</span>
         <span className="text-gold text-xs font-semibold">{level}%</span>
       </div>
+
+      {/* Track */}
       <div className="h-1.5 w-full overflow-hidden rounded-full bg-white/10">
+        {/* Animated fill */}
         <motion.div
           className="h-full rounded-full bg-gradient-to-r from-gold-dark via-gold to-gold-light"
           initial={{ width: 0 }}

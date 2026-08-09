@@ -1,16 +1,26 @@
+/**
+ * Shared TypeScript types for the portfolio.
+ * All UI copy and structured content shapes live here so components stay typed.
+ */
+
+/** Supported UI languages */
 export type Locale = "en" | "fa";
 
+/** Single skill entry (name + proficiency 0–100) */
 export interface Skill {
   name: string;
   level: number;
 }
 
+/** Service / “what I offer” card */
 export interface Service {
   title: string;
   description: string;
+  /** Key used to pick an icon in ServiceCard */
   icon: "code" | "palette" | "pen" | "search";
 }
 
+/** Featured project card */
 export interface Project {
   title: string;
   description: string;
@@ -21,6 +31,7 @@ export interface Project {
   githubUrl?: string;
 }
 
+/** One job in the experience timeline */
 export interface ExperienceItem {
   company: string;
   role: string;
@@ -29,11 +40,16 @@ export interface ExperienceItem {
   bullets: string[];
 }
 
+/** Quick link chip under Live Projects */
 export interface LiveProject {
   name: string;
   url: string;
 }
 
+/**
+ * Full translation tree for one locale.
+ * Mirrors the structure of `lib/data.ts`.
+ */
 export interface Translations {
   languageButton: string;
   name: string;
