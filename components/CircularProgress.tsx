@@ -40,6 +40,7 @@ export function CircularProgress({
   }, [level, delay, count, rounded]);
 
   // Circle geometry (r = 36 inside an 80×80 viewBox)
+  
   const circumference = 2 * Math.PI * 36;
   const offset = circumference - (level / 100) * circumference;
 
