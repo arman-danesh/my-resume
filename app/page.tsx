@@ -19,6 +19,7 @@ export default function HomePage() {
   const { isRTL, isSwitching, locale } = useLanguage();
 
   // Keep document language & direction in sync with UI locale
+  
   useEffect(() => {
     document.documentElement.lang = isRTL ? "fa" : "en";
     document.documentElement.dir = isRTL ? "rtl" : "ltr";
