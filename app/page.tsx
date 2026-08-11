@@ -42,6 +42,7 @@ export default function HomePage() {
           key={locale} remounts content on language change so
           text updates cleanly; opacity follows isSwitching.
         */}
+        
         <motion.main
           key={locale}
           initial={{ opacity: 0, y: 8 }}
