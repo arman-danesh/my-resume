@@ -1,21 +1,13 @@
-/**
- * Next.js config
- * --------------
- * - output: "export" → static HTML for GitHub Pages
- * - images.unoptimized → required for static export
- * - trailingSlash → cleaner paths on static hosts
- */
-
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Remove "output: export"
-  output: "standalone",  // For Cloudflare Workers
+  output: "export",
   images: {
     unoptimized: true,
   },
-  // Remove trailingSlash or keep it
   trailingSlash: true,
+  // Add this to ensure the out directory is created
+  distDir: 'out', // This tells Next.js to output to 'out' instead of '.next'
 };
 
 export default nextConfig;
