@@ -9,10 +9,12 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "export",
+  // Remove "output: export"
+  output: "standalone",  // For Cloudflare Workers
   images: {
     unoptimized: true,
   },
+  // Remove trailingSlash or keep it
   trailingSlash: true,
 };
 
