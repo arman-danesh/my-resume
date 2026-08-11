@@ -13,6 +13,7 @@ import type { Service } from "@/lib/types";
 import type { IconType } from "react-icons";
 
 /** Map service.icon key → react-icons component */
+
 const icons: Record<Service["icon"], IconType> = {
   code: FaCode,
   palette: FaPalette,
