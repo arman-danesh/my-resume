@@ -39,8 +39,9 @@ export function ServiceCard({ service, index }: ServiceCardProps) {
       whileHover={{ y: -6, transition: { duration: 0.2 } }}
       className="group flex flex-1 flex-col rounded-2xl border border-white/5 bg-surface p-5 shadow-soft transition-shadow hover:shadow-gold"
     >
-      {/* Icon badge */}
       
+      {/* Icon badge */}
+
       <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gold/10 text-gold transition-colors group-hover:bg-gold/20">
         <Icon size={22} />
       </div>
