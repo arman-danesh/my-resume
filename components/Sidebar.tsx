@@ -73,7 +73,7 @@ export function Sidebar() {
           <h2 className="mb-2 text-sm font-bold uppercase tracking-wider text-gold">
             {t.about.title}
           </h2>
-          <p className="text-sm leading-relaxed text-white/70">{t.about.description}</p>
+          <p className="text-sm leading-relaxed text-white/70 h-10 overflow-y-auto">{t.about.description}</p>
         </section>
 
         <hr className="border-white/5" />

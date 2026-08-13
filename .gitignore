@@ -38,3 +38,5 @@ next-env.d.ts
 # Cloudflare / Wrangler local state
 .wrangler/
 .dev.vars
+
+package-lock.json
