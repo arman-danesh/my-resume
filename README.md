@@ -32,7 +32,7 @@ Deployed on **Cloudflare Workers** (static assets from `out/` + thin `worker.js`
 | Motion | Welcome intro, skill bars, circular progress, scroll-in cards |
 | PWA-ready | `manifest.webmanifest` + SVG logo/favicon |
 | Static export | `output: "export"` → `out/` served by Worker assets |
-| API docs | TypeDoc (dark theme) published on every release to `gh-pages` |
+| docs | TypeDoc (dark theme) published on every release to `gh-pages` |
 
 ---
 
@@ -139,4 +139,4 @@ MIT © Arman Danesh
 - **Telegram:** [@ArmanDaneshWork](https://t.me/ArmanDaneshWork)
 - **GitHub:** [arman-danesh](https://github.com/arman-danesh)
 - **Live resume:** [my-resume.armandaneshwork.workers.dev](https://my-resume.armandaneshwork.workers.dev/)
-- **API docs:** [arman-danesh.github.io/my-resume](https://arman-danesh.github.io/my-resume/)
+- **docs:** [arman-danesh.github.io/my-resume](https://arman-danesh.github.io/my-resume/)

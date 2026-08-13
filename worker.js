@@ -3,7 +3,7 @@
  *
  * Next.js builds a static site into `out/` (`output: "export"`).
  * This Worker serves those files through the `ASSETS` binding configured in
- * `wrangler.jsonc`. There is no SSR or API layer here.
+ * `wrangler.jsonc`. There is no SSR or layer here.
  *
  * @module worker
  */
