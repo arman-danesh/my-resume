@@ -1,0 +1,131 @@
+/**
+ * TypeDoc custom dark theme — portfolio gold / near-black.
+ * Forced dark on GitHub Pages (overrides light + OS preference).
+ */
+
+html {
+  color-scheme: dark !important;
+}
+
+:root,
+:root[data-theme="light"],
+:root[data-theme="os"],
+:root[data-theme="dark"] {
+  color-scheme: dark !important;
+
+  --light-color-background: #0b0b0d;
+  --light-color-background-secondary: #12121a;
+  --light-color-warning-text: #f0c14b;
+  --light-color-background-warning: #2a2310;
+  --light-color-icon-background: #1a1a22;
+  --light-color-accent: #dba507;
+  --light-color-text: #e8e8ed;
+  --light-color-text-aside: #9a9aa8;
+  --light-color-link: #f0c14b;
+  --light-color-active-menu-item: #1f1a0a;
+  --light-color-menu-divider: #2a2a35;
+  --light-color-menu-divider-active: #dba507;
+  --light-color-overlay-background: rgba(0, 0, 0, 0.75);
+  --light-color-project-menu-divider: #2a2a35;
+  --light-color-focus-outline: #dba507;
+  --light-color-code-background: #16161f;
+  --light-color-ts: #7eb8ff;
+  --light-color-ts-interface: #b8e0a8;
+  --light-color-ts-enum: #e0c48a;
+  --light-color-ts-class: #c4b5fd;
+  --light-color-ts-function: #f9a8d4;
+  --light-color-ts-namespace: #93c5fd;
+  --light-color-ts-variable: #fcd34d;
+  --light-color-ts-property: #a5b4fc;
+  --light-color-toolbar: #0f0f14;
+  --light-color-toolbar-text: #e8e8ed;
+
+  --dark-color-background: #0b0b0d;
+  --dark-color-background-secondary: #12121a;
+  --dark-color-warning-text: #f0c14b;
+  --dark-color-background-warning: #2a2310;
+  --dark-color-icon-background: #1a1a22;
+  --dark-color-accent: #dba507;
+  --dark-color-text: #e8e8ed;
+  --dark-color-text-aside: #9a9aa8;
+  --dark-color-link: #f0c14b;
+  --dark-color-active-menu-item: #1f1a0a;
+  --dark-color-menu-divider: #2a2a35;
+  --dark-color-menu-divider-active: #dba507;
+  --dark-color-overlay-background: rgba(0, 0, 0, 0.75);
+  --dark-color-project-menu-divider: #2a2a35;
+  --dark-color-focus-outline: #dba507;
+  --dark-color-code-background: #16161f;
+  --dark-color-ts: #7eb8ff;
+  --dark-color-ts-interface: #b8e0a8;
+  --dark-color-ts-enum: #e0c48a;
+  --dark-color-ts-class: #c4b5fd;
+  --dark-color-ts-function: #f9a8d4;
+  --dark-color-ts-namespace: #93c5fd;
+  --dark-color-ts-variable: #fcd34d;
+  --dark-color-ts-property: #a5b4fc;
+  --dark-color-toolbar: #0f0f14;
+  --dark-color-toolbar-text: #e8e8ed;
+}
+
+html,
+body {
+  background: #0b0b0d !important;
+  color: #e8e8ed !important;
+}
+
+/* Toolbar / sidebar surfaces */
+.tsd-page-toolbar,
+.tsd-navigation.primary,
+.tsd-navigation.secondary,
+.col-sidebar,
+.site-menu {
+  background: #0f0f14 !important;
+}
+
+.tsd-page-toolbar,
+.tsd-navigation a,
+.tsd-page-title a,
+footer a {
+  color: #f0c14b !important;
+}
+
+.tsd-navigation a:hover,
+.tsd-page-title a:hover,
+footer a:hover {
+  color: #dba507 !important;
+}
+
+/* Hide default theme picker if present — site is always dark */
+.tsd-theme-toggle,
+#tsd-theme {
+  display: none !important;
+}
+
+.portfolio-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  justify-content: center;
+  padding: 1rem 1.25rem;
+  margin: 0;
+  background: #12121a;
+  border-bottom: 1px solid #2a2a35;
+  font-size: 0.9rem;
+}
+
+.portfolio-links a {
+  color: #f0c14b !important;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.portfolio-links a:hover {
+  color: #dba507 !important;
+  text-decoration: underline;
+}
+
+footer {
+  border-top: 1px solid #2a2a35;
+  background: #0f0f14 !important;
+}
