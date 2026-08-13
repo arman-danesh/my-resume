@@ -1,0 +1,33 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "name": "Arman Danesh Portfolio — API Documentation",
+  "entryPoints": ["lib", "components"],
+  "entryPointStrategy": "expand",
+  "out": "docs",
+  "readme": "README.md",
+  "tsconfig": "tsconfig.json",
+  "includeVersion": true,
+  "excludePrivate": true,
+  "excludeExternals": true,
+  "excludeInternal": true,
+  "skipErrorChecking": true,
+  "hideGenerator": false,
+  "searchInComments": true,
+  "navigation": {
+    "includeCategories": true,
+    "includeGroups": true
+  },
+  "categorizeByGroup": true,
+  "sort": ["source-order"],
+  "plugin": [],
+  "exclude": [
+    "**/node_modules/**",
+    "**/*.css",
+    "**/out/**",
+    "**/.next/**"
+  ],
+  "compilerOptions": {
+    "skipLibCheck": true,
+    "jsx": "react-jsx"
+  }
+}

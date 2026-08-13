@@ -9,7 +9,8 @@
 @tailwind utilities;
 
 /* Design tokens (also mirrored in tailwind.config.ts) */
-
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 :root {
   --gold: #dba507;
   --surface: rgba(33, 33, 40, 0.75);
@@ -26,6 +27,29 @@ body {
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* English */
+body { font-family: 'Inter', system-ui, sans-serif; }
+.english-text,
+.sidebar h1, .sidebar h2, .sidebar h3, .sidebar h4, .sidebar h5, .sidebar h6,
+.main-content h1, .main-content h2, .main-content h3, .main-content h4, .main-content h5, .main-content h6 {
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* Persian + RTL */
+[dir="rtl"] {
+  font-family: 'Vazirmatn', system-ui, sans-serif;
+  text-align: right;
+}
+
+.persian-text,
+[dir="rtl"] .persian-text,
+[dir="rtl"] .sidebar,
+[dir="rtl"] .main-content,
+[dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3, [dir="rtl"] h4, [dir="rtl"] h5, [dir="rtl"] h6 {
+  font-family: 'Vazirmatn', system-ui, sans-serif;
+  text-align: right;
 }
 
 /* Custom scrollbar (WebKit) */

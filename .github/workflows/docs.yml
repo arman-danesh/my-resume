@@ -1,0 +1,63 @@
+###############################################################################
+# TypeDoc → GitHub Pages (gh-pages branch)
+# -----------------------------------------
+# Builds API documentation from TSDoc comments and publishes to the
+# `gh-pages` branch so it is available at:
+#   https://arman-danesh.github.io/my-resume/
+#
+# Triggers:
+#   - Every published GitHub Release
+#   - Push of version tags (v*)
+#   - Manual "Run workflow" from Actions tab
+###############################################################################
+
+name: Docs
+
+on:
+  release:
+    types: [published]
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: docs-gh-pages
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy-docs:
+    name: Build TypeDoc & deploy to gh-pages
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Generate TypeDoc site
+        run: npm run docs
+
+      - name: Deploy to gh-pages branch
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs
+          publish_branch: gh-pages
+          # Keep a .nojekyll so paths with underscores work on GitHub Pages
+          enable_jekyll: false
+          force_orphan: true
+          user_name: "github-actions[bot]"
+          user_email: "github-actions[bot]@users.noreply.github.com"
+          commit_message: "docs: publish TypeDoc for ${{ github.ref_name }}"

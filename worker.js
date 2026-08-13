@@ -1,19 +1,27 @@
 /**
- * Cloudflare Worker — static asset gateway
- * ----------------------------------------
- * Next.js builds a static site into `out/` (output: "export").
- * This Worker serves those files through the ASSETS binding.
+ * @file Cloudflare Worker — static asset gateway for the Next.js export.
  *
- * No SSR / API routes here — pure static portfolio hosting.
+ * Next.js builds a static site into `out/` (`output: "export"`).
+ * This Worker serves those files through the `ASSETS` binding configured in
+ * `wrangler.jsonc`. There is no SSR or API layer here.
+ *
+ * @module worker
+ */
+
+/**
+ * @typedef {Object} Env
+ * @property {Fetcher} ASSETS - Binding to the uploaded `out/` static directory
  */
 
 export default {
   /**
-   * @param {Request} request
-   * @param {{ ASSETS: Fetcher }} env
+   * Handle every incoming HTTP request by proxying to static assets.
+   *
+   * @param {Request} request - Incoming request
+   * @param {Env} env - Worker bindings
+   * @returns {Promise<Response>} Asset response from `out/`
    */
   async fetch(request, env) {
-    // Serve files from the uploaded `out/` directory
     return env.ASSETS.fetch(request);
   },
 };

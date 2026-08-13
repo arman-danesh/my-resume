@@ -1,14 +1,10 @@
 "use client";
 
 /**
- * Sidebar
- * -------
- * Left column (sticky on md+):
- * - Language toggle
- * - Profile photo + name + roles
- * - About, Information, Education
- * - Focus-area circular progress
- * - Contact links + social icons
+ * @packageDocumentation
+ * Sticky left column: profile, about, info, education, focus rings, contact.
+ *
+ * @module components/Sidebar
  */
 
 import { motion } from "framer-motion";
@@ -24,6 +20,14 @@ import Image from "next/image";
 import { useLanguage } from "@/lib/LanguageContext";
 import { CircularProgress } from "./CircularProgress";
 
+/**
+ * Portfolio sidebar driven entirely by {@link useLanguage} translations.
+ *
+ * Includes language toggle, avatar, about/information/education sections,
+ * {@link CircularProgress} focus areas, and contact / social links.
+ *
+ * @returns Sidebar aside element
+ */
 export function Sidebar() {
   const { t, isRTL, toggleLanguage, isSwitching } = useLanguage();
 
@@ -34,7 +38,6 @@ export function Sidebar() {
       transition={{ duration: 0.55, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
       className="relative top-4 flex h-fit w-full flex-col overflow-hidden rounded-2xl border border-white/5 bg-surface shadow-soft md:sticky lg:w-[320px] lg:shrink-0"
     >
-      {/* ---- Header: lang button, avatar, name, roles ---- */}
       <div className="relative border-b border-white/5 bg-gradient-to-b from-gold/10 to-transparent p-6 text-center">
         <button
           onClick={toggleLanguage}
@@ -66,19 +69,16 @@ export function Sidebar() {
         </div>
       </div>
 
-      {/* ---- Body sections ---- */}
       <div className="flex flex-1 flex-col gap-5 p-5">
-        {/* About */}
         <section>
           <h2 className="mb-2 text-sm font-bold uppercase tracking-wider text-gold">
             {t.about.title}
           </h2>
-          <p className="text-sm leading-relaxed text-white/70 h-10 overflow-y-auto">{t.about.description}</p>
+          <p className="text-sm leading-relaxed text-white/70">{t.about.description}</p>
         </section>
 
         <hr className="border-white/5" />
 
-        {/* Information (location, languages, email) */}
         <section>
           <h2 className="mb-3 text-sm font-bold uppercase tracking-wider text-gold">
             {t.information.title}
@@ -98,7 +98,6 @@ export function Sidebar() {
 
         <hr className="border-white/5" />
 
-        {/* Education */}
         <section>
           <h2 className="mb-3 flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-gold">
             <FaGraduationCap size={14} />
@@ -110,7 +109,6 @@ export function Sidebar() {
 
         <hr className="border-white/5" />
 
-        {/* Focus areas (circular progress) */}
         <section>
           <h2 className="mb-4 text-sm font-bold uppercase tracking-wider text-gold">
             {t.learning.title}
@@ -129,7 +127,6 @@ export function Sidebar() {
 
         <hr className="border-white/5" />
 
-        {/* Contact */}
         <section>
           <h2 className="mb-3 text-sm font-bold uppercase tracking-wider text-gold">
             {t.contact.title}
@@ -168,7 +165,6 @@ export function Sidebar() {
         </section>
       </div>
 
-      {/* ---- Social footer ---- */}
       <div className="flex items-center justify-center gap-4 border-t border-white/5 py-4">
         <a
           href="https://www.linkedin.com/in/arman-danesh-a6aaab2bb/"

@@ -1,13 +1,13 @@
 /**
- * JsonLd
- * ------
- * Injects schema.org JSON-LD for Person, WebSite, and ProfessionalService.
- * Helps classic SEO and generative/answer engines (GEO) understand who you are,
- * where you work, and what skills you offer.
+ * @packageDocumentation
+ * Schema.org JSON-LD for Person, WebSite, and ProfessionalService (SEO / GEO).
+ *
+ * @module components/JsonLd
  */
 
 const SITE_URL = "https://arman-danesh.github.io/my-resume";
 
+/** Person entity for structured data. */
 const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
@@ -61,6 +61,7 @@ const personSchema = {
   },
 };
 
+/** WebSite entity linked to the Person. */
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
@@ -74,6 +75,7 @@ const websiteSchema = {
   publisher: { "@id": `${SITE_URL}/#person` },
 };
 
+/** ProfessionalService entity for local / remote offerings. */
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
@@ -84,18 +86,9 @@ const serviceSchema = {
     "Front-end development, UI implementation, dashboards, and performance optimization using React, Next.js, Vue, and TypeScript.",
   provider: { "@id": `${SITE_URL}/#person` },
   areaServed: [
-    {
-      "@type": "City",
-      name: "Tehran",
-    },
-    {
-      "@type": "Country",
-      name: "Iran",
-    },
-    {
-      "@type": "Place",
-      name: "Remote",
-    },
+    { "@type": "City", name: "Tehran" },
+    { "@type": "Country", name: "Iran" },
+    { "@type": "Place", name: "Remote" },
   ],
   serviceType: [
     "Front-End Development",
@@ -107,13 +100,18 @@ const serviceSchema = {
   availableLanguage: ["English", "Persian"],
 };
 
+/**
+ * Injects a single `<script type="application/ld+json">` with Person,
+ * WebSite, and ProfessionalService graphs for search and answer engines.
+ *
+ * @returns JSON-LD script element
+ */
 export function JsonLd() {
   const payload = [personSchema, websiteSchema, serviceSchema];
 
   return (
     <script
       type="application/ld+json"
-      // Safe: content is fully controlled by us (no user input)
       dangerouslySetInnerHTML={{ __html: JSON.stringify(payload) }}
     />
   );
