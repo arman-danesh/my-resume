@@ -28,6 +28,7 @@ export default function HomePage() {
   return (
     <>
       {/* Full-screen intro (auto-dismiss ~2.2s) */}
+      
       <WelcomeAnimation />
 
       {/* Page shell with background art */}
