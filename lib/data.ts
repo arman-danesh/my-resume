@@ -297,7 +297,7 @@ export const translations: Record<Locale, Translations> = {
       title: "سوابق کاری",
       items: [
         {
-          company: "پریز همکار",
+          company: "پاریز همکار",
           role: "توسعه‌دهنده فرانت‌اند",
           period: "آذر ۱۴۰۴ – اکنون",
           location: "تهران",
