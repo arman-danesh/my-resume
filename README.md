@@ -3,6 +3,22 @@
 Personal portfolio of **Arman Danesh**, Front-End Developer.  
 Built with **Next.js 15** (App Router), **TypeScript**, **Tailwind CSS**, **Framer Motion**, and **react-icons**.
 
+---
+
+## Quick links
+
+| | |
+|:--|:--|
+| **Live resume** | [https://my-resume.armandaneshwork.workers.dev/](https://my-resume.armandaneshwork.workers.dev/) |
+| **API documentation** | [https://arman-danesh.github.io/my-resume/](https://arman-danesh.github.io/my-resume/) |
+| **Source code** | [github.com/arman-danesh/my-resume](https://github.com/arman-danesh/my-resume) |
+
+```text
+Resume  →  https://my-resume.armandaneshwork.workers.dev/
+Docs    →  https://arman-danesh.github.io/my-resume/
+GitHub  →  https://github.com/arman-danesh/my-resume
+```
+
 Deployed on **Cloudflare Workers** (static assets from `out/` + thin `worker.js`).
 
 ---
@@ -16,7 +32,7 @@ Deployed on **Cloudflare Workers** (static assets from `out/` + thin `worker.js`
 | Motion | Welcome intro, skill bars, circular progress, scroll-in cards |
 | PWA-ready | `manifest.webmanifest` + SVG logo/favicon |
 | Static export | `output: "export"` → `out/` served by Worker assets |
-| API docs | TypeDoc published on every release to `gh-pages` |
+| API docs | TypeDoc (dark theme) published on every release to `gh-pages` |
 
 ---
 
@@ -41,7 +57,8 @@ my-resume/
 ├── public/                   # static assets + fonts
 ├── worker.js                 # Cloudflare Worker (serves ASSETS)
 ├── wrangler.jsonc
-├── typedoc.json              # TypeDoc config
+├── typedoc.json              # TypeDoc config (dark theme)
+├── docs-theme.css            # Custom dark styles for TypeDoc
 ├── .github/workflows/docs.yml
 └── package.json
 ```
@@ -63,12 +80,17 @@ npm run deploy       # build + wrangler deploy
 ## API documentation (TypeDoc)
 
 Comments use **TSDoc** (`@param`, `@returns`, `@module`, `@packageDocumentation`).
+Generated site uses a **dark theme** (`docs-theme.css`).
+
+### Live docs
+
+**https://arman-danesh.github.io/my-resume/**
 
 ### Generate locally
 
 ```bash
 npm run docs         # writes HTML to ./docs
-npm run docs:serve   # preview at http://localhost:3000 (or serve port)
+npm run docs:serve   # preview the docs site
 ```
 
 ### Publish on every release
@@ -82,14 +104,6 @@ Workflow: [`.github/workflows/docs.yml`](.github/workflows/docs.yml)
 | **Actions → Docs → Run workflow** | Manual |
 
 After the first successful run, enable **Settings → Pages → Deploy from branch `gh-pages` / root**.
-
-Public docs URL (typical):
-
-```text
-https://arman-danesh.github.io/my-resume/
-```
-
-Share that link with users who need the component / type reference.
 
 ---
 
@@ -105,6 +119,8 @@ npm run build  →  out/
 wrangler deploy → worker.js + out/ as ASSETS
 ```
 
+**Live site:** [https://my-resume.armandaneshwork.workers.dev/](https://my-resume.armandaneshwork.workers.dev/)
+
 ---
 
 ## Editing content
@@ -119,6 +135,8 @@ MIT © Arman Danesh
 
 ## Contact
 
-- Email: armandaneshwork@gmail.com
-- Telegram: @ArmanDaneshWork
-- GitHub: arman-danesh
+- **Email:** [armandaneshwork@gmail.com](mailto:armandaneshwork@gmail.com)
+- **Telegram:** [@ArmanDaneshWork](https://t.me/ArmanDaneshWork)
+- **GitHub:** [arman-danesh](https://github.com/arman-danesh)
+- **Live resume:** [my-resume.armandaneshwork.workers.dev](https://my-resume.armandaneshwork.workers.dev/)
+- **API docs:** [arman-danesh.github.io/my-resume](https://arman-danesh.github.io/my-resume/)

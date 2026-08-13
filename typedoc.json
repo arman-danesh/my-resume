@@ -13,6 +13,11 @@
   "skipErrorChecking": true,
   "hideGenerator": false,
   "searchInComments": true,
+  "customCss": "./docs-theme.css",
+  "customJs": "./docs-theme.js",
+  "darkHighlightTheme": "github-dark",
+  "lightHighlightTheme": "github-dark",
+  "customFooterHtml": "<p><a href=\"https://my-resume.armandaneshwork.workers.dev/\" target=\"_blank\" rel=\"noopener\">Live resume</a> · <a href=\"https://arman-danesh.github.io/my-resume/\">API docs</a> · <a href=\"https://github.com/arman-danesh/my-resume\" target=\"_blank\" rel=\"noopener\">GitHub</a></p>",
   "navigation": {
     "includeCategories": true,
     "includeGroups": true
