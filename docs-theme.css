@@ -1,12 +1,18 @@
 /**
- * TypeDoc custom dark theme — matches portfolio (gold / near-black).
- * Forced dark UI; light media queries overridden.
+ * TypeDoc custom dark theme — portfolio gold / near-black.
+ * Forced dark on GitHub Pages (overrides light + OS preference).
  */
+
+html {
+  color-scheme: dark !important;
+}
 
 :root,
 :root[data-theme="light"],
-:root[data-theme="os"] {
-  color-scheme: dark;
+:root[data-theme="os"],
+:root[data-theme="dark"] {
+  color-scheme: dark !important;
+
   --light-color-background: #0b0b0d;
   --light-color-background-secondary: #12121a;
   --light-color-warning-text: #f0c14b;
@@ -19,7 +25,7 @@
   --light-color-active-menu-item: #1f1a0a;
   --light-color-menu-divider: #2a2a35;
   --light-color-menu-divider-active: #dba507;
-  --light-color-overlay-background: rgba(0, 0, 0, 0.7);
+  --light-color-overlay-background: rgba(0, 0, 0, 0.75);
   --light-color-project-menu-divider: #2a2a35;
   --light-color-focus-outline: #dba507;
   --light-color-code-background: #16161f;
@@ -33,6 +39,7 @@
   --light-color-ts-property: #a5b4fc;
   --light-color-toolbar: #0f0f14;
   --light-color-toolbar-text: #e8e8ed;
+
   --dark-color-background: #0b0b0d;
   --dark-color-background-secondary: #12121a;
   --dark-color-warning-text: #f0c14b;
@@ -45,7 +52,7 @@
   --dark-color-active-menu-item: #1f1a0a;
   --dark-color-menu-divider: #2a2a35;
   --dark-color-menu-divider-active: #dba507;
-  --dark-color-overlay-background: rgba(0, 0, 0, 0.7);
+  --dark-color-overlay-background: rgba(0, 0, 0, 0.75);
   --dark-color-project-menu-divider: #2a2a35;
   --dark-color-focus-outline: #dba507;
   --dark-color-code-background: #16161f;
@@ -64,24 +71,37 @@
 html,
 body {
   background: #0b0b0d !important;
-  color: #e8e8ed;
+  color: #e8e8ed !important;
 }
 
-/* Top bar / title links */
+/* Toolbar / sidebar surfaces */
+.tsd-page-toolbar,
+.tsd-navigation.primary,
+.tsd-navigation.secondary,
+.col-sidebar,
+.site-menu {
+  background: #0f0f14 !important;
+}
+
 .tsd-page-toolbar,
 .tsd-navigation a,
 .tsd-page-title a,
 footer a {
-  color: #f0c14b;
+  color: #f0c14b !important;
 }
 
 .tsd-navigation a:hover,
 .tsd-page-title a:hover,
 footer a:hover {
-  color: #dba507;
+  color: #dba507 !important;
 }
 
-/* Site header quick links (injected via customFooter / README) */
+/* Hide default theme picker if present — site is always dark */
+.tsd-theme-toggle,
+#tsd-theme {
+  display: none !important;
+}
+
 .portfolio-links {
   display: flex;
   flex-wrap: wrap;
@@ -95,17 +115,17 @@ footer a:hover {
 }
 
 .portfolio-links a {
-  color: #f0c14b;
+  color: #f0c14b !important;
   text-decoration: none;
   font-weight: 600;
 }
 
 .portfolio-links a:hover {
-  color: #dba507;
+  color: #dba507 !important;
   text-decoration: underline;
 }
 
 footer {
   border-top: 1px solid #2a2a35;
-  background: #0f0f14;
+  background: #0f0f14 !important;
 }

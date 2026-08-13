@@ -1,19 +1,34 @@
 ###############################################################################
 # TypeDoc → GitHub Pages (gh-pages branch)
 # -----------------------------------------
-# Builds API documentation from TSDoc comments and publishes to the
-# `gh-pages` branch so it is available at:
-#   https://arman-danesh.github.io/my-resume/
+# Source of truth: main (typedoc.json, docs-theme.*, lib/, components/)
+# Published site:  gh-pages branch (generated HTML only)
+# URL:             https://arman-danesh.github.io/my-resume/
 #
 # Triggers:
-#   - Every published GitHub Release
-#   - Push of version tags (v*)
-#   - Manual "Run workflow" from Actions tab
+#   - Push to main (docs-related paths or full tree)
+#   - Published GitHub Release
+#   - Version tags (v*)
+#   - Manual "Run workflow"
 ###############################################################################
 
 name: Docs
 
 on:
+  push:
+    branches:
+      - main
+    paths:
+      - "lib/**"
+      - "components/**"
+      - "typedoc.json"
+      - "docs-theme.css"
+      - "docs-theme.js"
+      - "package.json"
+      - "package-lock.json"
+      - "tsconfig.json"
+      - "README.md"
+      - ".github/workflows/docs.yml"
   release:
     types: [published]
   push:
@@ -23,6 +38,8 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 concurrency:
   group: docs-gh-pages
@@ -41,7 +58,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "22"
-          cache: npm
 
       - name: Install dependencies
         run: npm install
@@ -49,15 +65,21 @@ jobs:
       - name: Generate TypeDoc site
         run: npm run docs
 
+      - name: Ensure .nojekyll (GitHub Pages)
+        run: |
+          touch docs/.nojekyll
+          # Fail fast if theme assets were not copied into the build
+          test -f docs/assets/style.css || test -d docs/assets
+          ls -la docs/ | head -40
+
       - name: Deploy to gh-pages branch
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docs
           publish_branch: gh-pages
-          # Keep a .nojekyll so paths with underscores work on GitHub Pages
           enable_jekyll: false
           force_orphan: true
           user_name: "github-actions[bot]"
           user_email: "github-actions[bot]@users.noreply.github.com"
-          commit_message: "docs: publish TypeDoc for ${{ github.ref_name }}"
+          commit_message: "docs: publish TypeDoc (${{ github.sha }})"
