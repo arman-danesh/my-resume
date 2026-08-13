@@ -79,6 +79,7 @@ export function Sidebar() {
         <hr className="border-white/5" />
 
         {/* Information (location, languages, email) */}
+        
         <section>
           <h2 className="mb-3 text-sm font-bold uppercase tracking-wider text-gold">
             {t.information.title}
