@@ -1,16 +1,10 @@
 "use client";
 
 /**
- * MainContent
- * -----------
- * Right column — main portfolio body:
- * 1. Professional skills (two-column bars)
- * 2. Experience timeline
- * 3. Services grid
- * 4. Featured projects
- * 5. Live project chips
- * 6. Soft skills
- * 7. Footer
+ * @packageDocumentation
+ * Main portfolio column: skills, experience, services, projects, soft skills.
+ *
+ * @module components/MainContent
  */
 
 import { motion } from "framer-motion";
@@ -19,10 +13,17 @@ import { useLanguage } from "@/lib/LanguageContext";
 import { SkillBar } from "./SkillBar";
 import { ServiceCard } from "./ServiceCard";
 
+/**
+ * Right-hand portfolio body driven by {@link useLanguage} translations.
+ *
+ * Sections: professional skills (two columns), experience timeline,
+ * services grid, featured projects, live project chips, soft skills, footer.
+ *
+ * @returns Main article element
+ */
 export function MainContent() {
   const { t } = useLanguage();
 
-  // Split technical skills into two balanced columns
   const mid = Math.ceil(t.skills.technical.length / 2);
   const leftSkills = t.skills.technical.slice(0, mid);
   const rightSkills = t.skills.technical.slice(mid);
@@ -34,7 +35,6 @@ export function MainContent() {
       transition={{ duration: 0.55, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
       className="min-w-0 flex-1 rounded-2xl border border-white/5 bg-surface p-5 shadow-soft md:p-8"
     >
-      {/* ========== Professional Skills ========== */}
       <section>
         <h2 className="mb-6 flex items-center justify-center gap-2 text-xl font-bold text-white md:text-2xl">
           <span className="text-gold">&lt;</span>
@@ -65,7 +65,6 @@ export function MainContent() {
         </div>
       </section>
 
-      {/* ========== Experience ========== */}
       <section className="mt-10">
         <h2 className="mb-6 flex items-center justify-center gap-2 text-xl font-bold text-white md:text-2xl">
           <span className="text-gold">&lt;</span>
@@ -106,7 +105,6 @@ export function MainContent() {
         </div>
       </section>
 
-      {/* ========== Services ========== */}
       <section className="mt-10">
         <h2 className="mb-6 flex items-center justify-center gap-2 text-xl font-bold text-white md:text-2xl">
           <span className="text-gold">&lt;</span>
@@ -120,7 +118,6 @@ export function MainContent() {
         </div>
       </section>
 
-      {/* ========== Featured Projects ========== */}
       <section className="mt-10">
         <h2 className="mb-6 flex items-center justify-center gap-2 text-xl font-bold text-white md:text-2xl">
           <span className="text-gold">&lt;</span>
@@ -169,7 +166,6 @@ export function MainContent() {
         </div>
       </section>
 
-      {/* ========== Live Project Links ========== */}
       <section className="mt-10">
         <h2 className="mb-4 flex items-center justify-center gap-2 text-lg font-bold text-white">
           <span className="text-gold">&lt;</span>
@@ -191,7 +187,6 @@ export function MainContent() {
         </div>
       </section>
 
-      {/* ========== Soft Skills ========== */}
       <section className="mt-10">
         <h2 className="mb-6 flex items-center justify-center gap-2 text-xl font-bold text-white md:text-2xl">
           <span className="text-gold">&lt;</span>
@@ -210,7 +205,6 @@ export function MainContent() {
         </div>
       </section>
 
-      {/* ========== Footer ========== */}
       <footer className="mt-10 border-t border-white/5 pt-5 text-center text-xs text-white/40">
         {t.footer}
       </footer>

@@ -16,13 +16,14 @@ Deployed on **Cloudflare Workers** (static assets from `out/` + thin `worker.js`
 | Motion | Welcome intro, skill bars, circular progress, scroll-in cards |
 | PWA-ready | `manifest.webmanifest` + SVG logo/favicon |
 | Static export | `output: "export"` → `out/` served by Worker assets |
+| API docs | TypeDoc published on every release to `gh-pages` |
 
 ---
 
 ## Tech stack
 
 - **Framework:** Next.js 15 (App Router)
-- **Language:** TypeScript
+- **Language:** TypeScript (TSDoc / TypeDoc)
 - **UI:** Tailwind CSS, custom gold/dark theme
 - **Animation:** Framer Motion
 - **Icons:** react-icons
@@ -34,13 +35,14 @@ Deployed on **Cloudflare Workers** (static assets from `out/` + thin `worker.js`
 
 ```
 my-resume/
-├── app/                    # Next.js App Router
-├── components/             # UI sections
-├── lib/                    # data.ts, types, LanguageContext
-├── public/                 # static assets
-├── worker.js               # Cloudflare Worker (serves ASSETS)
-├── wrangler.jsonc          # Worker + assets config
-├── next.config.ts          # output: "export"
+├── app/                      # Next.js App Router
+├── components/               # UI sections (TSDoc)
+├── lib/                      # data, types, LanguageContext (TSDoc)
+├── public/                   # static assets + fonts
+├── worker.js                 # Cloudflare Worker (serves ASSETS)
+├── wrangler.jsonc
+├── typedoc.json              # TypeDoc config
+├── .github/workflows/docs.yml
 └── package.json
 ```
 
@@ -52,39 +54,56 @@ my-resume/
 npm install
 npm run dev          # http://localhost:3000
 npm run build        # static export → out/
-npm run preview      # wrangler dev (Worker + assets)
+npm run preview      # wrangler dev
 npm run deploy       # build + wrangler deploy
 ```
 
 ---
 
+## API documentation (TypeDoc)
+
+Comments use **TSDoc** (`@param`, `@returns`, `@module`, `@packageDocumentation`).
+
+### Generate locally
+
+```bash
+npm run docs         # writes HTML to ./docs
+npm run docs:serve   # preview at http://localhost:3000 (or serve port)
+```
+
+### Publish on every release
+
+Workflow: [`.github/workflows/docs.yml`](.github/workflows/docs.yml)
+
+| Trigger | Action |
+|---------|--------|
+| GitHub **Release** published | Build TypeDoc → push to **`gh-pages`** branch |
+| Git tag `v*` | Same |
+| **Actions → Docs → Run workflow** | Manual |
+
+After the first successful run, enable **Settings → Pages → Deploy from branch `gh-pages` / root**.
+
+Public docs URL (typical):
+
+```text
+https://arman-danesh.github.io/my-resume/
+```
+
+Share that link with users who need the component / type reference.
+
+---
+
 ## Cloudflare deploy
-
-1. **Build:** `npm run build` → creates `out/`
-2. **Deploy:** `npx wrangler deploy`
-   - Uploads `worker.js`
-   - Uploads `out/` as Worker static assets (`ASSETS` binding)
-
-### Cloudflare dashboard (Git build)
 
 | Field | Value |
 |--------|--------|
 | Build command | `npm run build` |
 | Deploy command | `npx wrangler deploy` |
 
-Live Worker URL shape: `https://my-resume.<subdomain>.workers.dev`
-
----
-
-## How Worker + Next work together
-
 ```text
-npm run build  →  out/ (HTML, CSS, JS)
+npm run build  →  out/
 wrangler deploy → worker.js + out/ as ASSETS
-request → worker.js → env.ASSETS.fetch(request)
 ```
-
-This is still a **static** site. There is no Next.js server on the Worker.
 
 ---
 
