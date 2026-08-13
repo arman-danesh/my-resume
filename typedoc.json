@@ -1,6 +1,6 @@
 {
   "$schema": "https://typedoc.org/schema.json",
-  "name": "Arman Danesh Portfolio — API Documentation",
+  "name": "Arman Danesh Portfolio — Documentation",
   "entryPoints": ["lib", "components"],
   "entryPointStrategy": "expand",
   "out": "docs",

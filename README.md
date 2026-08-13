@@ -10,7 +10,7 @@ Built with **Next.js 15** (App Router), **TypeScript**, **Tailwind CSS**, **Fram
 | | |
 |:--|:--|
 | **Live resume** | [https://my-resume.armandaneshwork.workers.dev/](https://my-resume.armandaneshwork.workers.dev/) |
-| **API documentation** | [https://arman-danesh.github.io/my-resume/](https://arman-danesh.github.io/my-resume/) |
+| **documentation** | [https://arman-danesh.github.io/my-resume/](https://arman-danesh.github.io/my-resume/) |
 | **Source code** | [github.com/arman-danesh/my-resume](https://github.com/arman-danesh/my-resume) |
 
 ```text
@@ -77,7 +77,7 @@ npm run deploy       # build + wrangler deploy
 
 ---
 
-## API documentation (TypeDoc)
+## documentation (TypeDoc)
 
 Comments use **TSDoc** (`@param`, `@returns`, `@module`, `@packageDocumentation`).
 Generated site uses a **dark theme** (`docs-theme.css`).
