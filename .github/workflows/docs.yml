@@ -6,9 +6,9 @@
 # URL:             https://arman-danesh.github.io/my-resume/
 #
 # Triggers:
-#   - Push to main (docs-related paths or full tree)
-#   - Published GitHub Release
+#   - Every push to main
 #   - Version tags (v*)
+#   - Published GitHub Release
 #   - Manual "Run workflow"
 ###############################################################################
 
@@ -18,28 +18,14 @@ on:
   push:
     branches:
       - main
-    paths:
-      - "lib/**"
-      - "components/**"
-      - "typedoc.json"
-      - "docs-theme.css"
-      - "docs-theme.js"
-      - "package.json"
-      - "package-lock.json"
-      - "tsconfig.json"
-      - "README.md"
-      - ".github/workflows/docs.yml"
-  release:
-    types: [published]
-  push:
     tags:
       - "v*"
+  release:
+    types: [published]
   workflow_dispatch:
 
 permissions:
   contents: write
-  pages: write
-  id-token: write
 
 concurrency:
   group: docs-gh-pages
@@ -68,8 +54,6 @@ jobs:
       - name: Ensure .nojekyll (GitHub Pages)
         run: |
           touch docs/.nojekyll
-          # Fail fast if theme assets were not copied into the build
-          test -f docs/assets/style.css || test -d docs/assets
           ls -la docs/ | head -40
 
       - name: Deploy to gh-pages branch
