@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "deploy": "npm run build && npx wrangler pages deploy out"
+    "deploy": "npm run build && npx wrangler deploy",
+    "preview": "npm run build && npx wrangler dev"
   },
   "dependencies": {
     "framer-motion": "^11.15.0",

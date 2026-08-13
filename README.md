@@ -3,7 +3,7 @@
 Personal portfolio of **Arman Danesh**, Front-End Developer.  
 Built with **Next.js 15** (App Router), **TypeScript**, **Tailwind CSS**, **Framer Motion**, and **react-icons**.
 
-**Live:** [arman-danesh.github.io/my-resume](https://arman-danesh.github.io/my-resume/)
+Deployed on **Cloudflare Workers** (static assets from `out/` + thin `worker.js`).
 
 ---
 
@@ -15,7 +15,7 @@ Built with **Next.js 15** (App Router), **TypeScript**, **Tailwind CSS**, **Fram
 | Sections | About, Info, Education, Focus areas, Contact, Skills, Experience, Services, Projects, Live links |
 | Motion | Welcome intro, skill bars, circular progress, scroll-in cards |
 | PWA-ready | `manifest.webmanifest` + SVG logo/favicon |
-| Static export | `output: "export"` → deploy `out/` to GitHub Pages |
+| Static export | `output: "export"` → `out/` served by Worker assets |
 
 ---
 
@@ -25,8 +25,8 @@ Built with **Next.js 15** (App Router), **TypeScript**, **Tailwind CSS**, **Fram
 - **Language:** TypeScript
 - **UI:** Tailwind CSS, custom gold/dark theme
 - **Animation:** Framer Motion
-- **Icons:** react-icons (Font Awesome 6)
-- **Fonts:** Poppins + Playfair Display (`next/font`)
+- **Icons:** react-icons
+- **Hosting:** Cloudflare Workers (`worker.js` + static `out/`)
 
 ---
 
@@ -34,117 +34,63 @@ Built with **Next.js 15** (App Router), **TypeScript**, **Tailwind CSS**, **Fram
 
 ```
 my-resume/
-├── app/
-│   ├── layout.tsx          # Root layout, fonts, SEO, PWA metadata
-│   ├── page.tsx            # Home: welcome + sidebar + main
-│   └── globals.css         # Tokens, scrollbar, selection
-├── components/
-│   ├── Sidebar.tsx         # Profile, about, info, education, contact
-│   ├── MainContent.tsx     # Skills, experience, services, projects
-│   ├── SkillBar.tsx        # Horizontal skill progress
-│   ├── CircularProgress.tsx# Focus-area rings
-│   ├── ServiceCard.tsx     # “What I offer” card
-│   └── WelcomeAnimation.tsx# Intro overlay
-├── lib/
-│   ├── data.ts             # All EN/FA content (edit here)
-│   ├── types.ts            # Shared TypeScript interfaces
-│   └── LanguageContext.tsx # Locale state + toggle
-├── public/
-│   ├── logo.svg            # Brand mark (PWA + welcome)
-│   ├── favicon.svg
-│   ├── manifest.webmanifest
-│   ├── bg_image.svg        # Page background
-│   └── profile-image.jpg   # Sidebar photo
-├── next.config.ts          # Static export settings
-├── tailwind.config.ts
+├── app/                    # Next.js App Router
+├── components/             # UI sections
+├── lib/                    # data.ts, types, LanguageContext
+├── public/                 # static assets
+├── worker.js               # Cloudflare Worker (serves ASSETS)
+├── wrangler.jsonc          # Worker + assets config
+├── next.config.ts          # output: "export"
 └── package.json
 ```
 
 ---
 
-## Getting started
-
-### Requirements
-
-- Node.js 18+
-- npm (or yarn / pnpm)
-
-### Install & run
+## Local development
 
 ```bash
-git clone https://github.com/arman-danesh/my-resume.git
-cd my-resume
-git checkout dev
-
 npm install
-npm run dev
+npm run dev          # http://localhost:3000
+npm run build        # static export → out/
+npm run preview      # wrangler dev (Worker + assets)
+npm run deploy       # build + wrangler deploy
 ```
-
-Open [http://localhost:3000](http://localhost:3000).
-
-### Production build (static)
-
-```bash
-npm run build
-# Output: out/
-```
-
-Deploy the contents of `out/` to GitHub Pages (or any static host).
 
 ---
 
-## Scripts
+## Cloudflare deploy
 
-| Command | Description |
-|---------|-------------|
-| `npm run dev` | Local development server |
-| `npm run build` | Static export to `out/` |
-| `npm run start` | Serve production build (if not using pure static host) |
-| `npm run lint` | Next.js ESLint |
+1. **Build:** `npm run build` → creates `out/`
+2. **Deploy:** `npx wrangler deploy`
+   - Uploads `worker.js`
+   - Uploads `out/` as Worker static assets (`ASSETS` binding)
+
+### Cloudflare dashboard (Git build)
+
+| Field | Value |
+|--------|--------|
+| Build command | `npm run build` |
+| Deploy command | `npx wrangler deploy` |
+
+Live Worker URL shape: `https://my-resume.<subdomain>.workers.dev`
+
+---
+
+## How Worker + Next work together
+
+```text
+npm run build  →  out/ (HTML, CSS, JS)
+wrangler deploy → worker.js + out/ as ASSETS
+request → worker.js → env.ASSETS.fetch(request)
+```
+
+This is still a **static** site. There is no Next.js server on the Worker.
 
 ---
 
 ## Editing content
 
-All copy lives in **`lib/data.ts`**:
-
-- `en` / `fa` objects mirror each other
-- Experience, projects, skills, contact → change arrays/strings there
-- Types are enforced by **`lib/types.ts`**
-
-After editing, the UI updates automatically (no other files required for text).
-
----
-
-## Design system
-
-| Token | Value |
-|-------|--------|
-| Gold | `#DBA507` |
-| Gold light / dark | `#F0C14B` / `#B8860B` |
-| Surface | `rgba(33, 33, 40, 0.75)` |
-| Background | `#0B0B0D` |
-
-Defined in `tailwind.config.ts` and `app/globals.css`.
-
----
-
-## Language switching
-
-1. User clicks **FA** / **EN** in the sidebar.
-2. `LanguageContext.toggleLanguage` runs a short fade (`isSwitching`).
-3. `locale` flips; `page.tsx` sets `document.documentElement.lang` and `dir`.
-4. Components read `t` from `useLanguage()` and re-render.
-
----
-
-## Deployment (GitHub Pages)
-
-1. `npm run build`
-2. Publish `out/` to the `gh-pages` branch (or use Actions).
-3. For project sites, set `basePath` in `next.config.ts` if the site is not at the domain root.
-
-Current live URL assumes: `https://arman-danesh.github.io/my-resume/`
+All copy: **`lib/data.ts`** (EN + FA). Types: **`lib/types.ts`**.
 
 ---
 
@@ -152,11 +98,8 @@ Current live URL assumes: `https://arman-danesh.github.io/my-resume/`
 
 MIT © Arman Danesh
 
----
-
 ## Contact
 
-- **Email:** [armandaneshwork@gmail.com](mailto:armandaneshwork@gmail.com)
-- **Telegram:** [@ArmanDaneshWork](https://t.me/ArmanDaneshWork)
-- **LinkedIn:** [arman-danesh](https://www.linkedin.com/in/arman-danesh-a6aaab2bb/)
-- **GitHub:** [arman-danesh](https://github.com/arman-danesh)
+- Email: armandaneshwork@gmail.com
+- Telegram: @ArmanDaneshWork
+- GitHub: arman-danesh

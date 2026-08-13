@@ -25,6 +25,7 @@ yarn-error.log*
 
 # env files
 .env*.local
+.dev.vars
 
 # typescript
 *.tsbuildinfo
@@ -33,4 +34,7 @@ next-env.d.ts
 # IDE
 .idea/
 .vscode/
-package-lock.json
+
+# Cloudflare / Wrangler local state
+.wrangler/
+.dev.vars
