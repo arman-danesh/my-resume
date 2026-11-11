@@ -18,7 +18,7 @@ const personSchema = {
   image: `${SITE_URL}/profile-image.jpg`,
   jobTitle: "Front-End Developer",
   description:
-    "Front-End Developer with 3+ years of experience building scalable web applications with React, Vue, Next.js, and TypeScript. Based in Tehran, Iran.",
+    "Front-End Developer with 4+ years of experience building scalable web applications with React, Vue, Next.js, and TypeScript. Based in Tehran, Iran.",
   email: "mailto:armandaneshwork@gmail.com",
   telephone: "+98-991-153-7923",
   address: {
@@ -36,16 +36,19 @@ const personSchema = {
     "@type": "Country",
     name: "Iran",
   },
-  knowsLanguage: ["en", "fa"],
+  knowsLanguage: ["en", "fa", "de"],
   knowsAbout: [
     "React",
     "Next.js",
     "Vue.js",
+    "Nuxt.js",
     "TypeScript",
     "Tailwind CSS",
     "Zustand",
-    "Redux",
+    "Node.js",
+    "Nest.js",
     "Front-End Development",
+    "Full-Stack Development",
     "UI Implementation",
     "Web Performance",
     "SEO",
@@ -57,7 +60,7 @@ const personSchema = {
   ],
   worksFor: {
     "@type": "Organization",
-    name: "Pariz Hamkar",
+    name: "Sepahan Hamrah",
   },
 };
 

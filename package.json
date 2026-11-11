@@ -31,5 +31,8 @@
     "typedoc": "^0.28.0",
     "typescript": "^5.7.2",
     "wrangler": "^4.120.1"
+  },
+  "allowScripts": {
+    "esbuild": true
   }
 }
