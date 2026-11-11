@@ -16,7 +16,7 @@ import "./globals.css";
 const SITE_URL = "https://arman-danesh.github.io/my-resume";
 const SITE_NAME = "Arman Danesh — Front-End Developer";
 const SITE_DESCRIPTION =
-  "Arman Danesh is a Front-End Developer based in Tehran, Iran, with 3+ years of experience building scalable web apps using React, Vue, Next.js, and TypeScript. Hire a React / Next.js developer in Tehran.";
+  "Arman Danesh is a Front-End Developer based in Tehran, Iran, with 4+ years of experience building scalable web apps using React, Vue, Next.js, and TypeScript. Hire a React / Next.js developer in Tehran.";
 
 // Body text
 const poppins = Poppins({
@@ -66,7 +66,9 @@ export const metadata: Metadata = {
     "TypeScript",
     "Tailwind CSS",
     "Zustand",
-    "Redux",
+    "Nuxt.js",
+    "Nest.js",
+    "Full-Stack Developer",
     // Local / GEO
     "Front-End Developer Tehran",
     "React Developer Tehran",
