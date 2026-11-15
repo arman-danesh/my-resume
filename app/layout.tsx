@@ -46,6 +46,10 @@ export const metadata: Metadata = {
   generator: "Next.js",
   referrer: "origin-when-cross-origin",
 
+  verification: {
+    google: "EDw8zmVfYCh4qQS1Q_9ZD2iULI8EO9PbcE0Mec0_pp4",
+  },
+
   keywords: [
     // Name & identity
     "Arman Danesh",
