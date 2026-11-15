@@ -47,7 +47,10 @@ export const metadata: Metadata = {
   referrer: "origin-when-cross-origin",
 
   verification: {
-    google: "EDw8zmVfYCh4qQS1Q_9ZD2iULI8EO9PbcE0Mec0_pp4",
+    google: [
+      "EDw8zmVfYCh4qQS1Q_9ZD2iULI8EO9PbcE0Mec0_pp4",
+      "gY-vk3u6BxQGu5gy8btsOUoGsBkvN471RdLPultUC7c",
+    ],
   },
 
   keywords: [
